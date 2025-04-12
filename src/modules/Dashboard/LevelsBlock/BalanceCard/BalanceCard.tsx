@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import Image from "next/image";
 import FrozeSvg from "../../../../assets/froze.svg";
+import EtherumSvg from "../../../../assets/ethereum.svg";
+
 import "./styles.scss";
 
 const baseClassName = "balance-card";
@@ -50,7 +52,7 @@ const BalanceCard = () => {
       <div>
         <p className={`${baseClassName}__name`}>Frozen balance</p>
         <div className={`${baseClassName}__amount`}>
-          Icon
+          <Image src={EtherumSvg} width={24} height={24} alt="etherum" />
           <p className={`${baseClassName}__amount-text`}>0.0 ETH</p>
         </div>
         <p className={`${baseClassName}__profits`}>Missed profits: 0.00 ETH</p>

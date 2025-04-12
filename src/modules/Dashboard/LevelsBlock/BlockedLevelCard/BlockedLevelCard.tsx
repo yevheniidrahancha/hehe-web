@@ -1,24 +1,17 @@
-"use client";
-
 import Image from "next/image";
-import DottedUserSvg from "../../../../assets/dotted-user.svg";
 import EtherumSvg from "../../../../assets/ethereum.svg";
-import NextUserSvg from "../../../../assets/user-next.svg";
-
+import LockSvg from "../../../../assets/lock.svg";
+import DottedUserSvg from "../../../../assets/dotted-user.svg";
 import "./styles.scss";
-import Button from "@/components/Button/Button";
 
-const baseClassName = "next-level-card";
+const baseClassName = "blocked-level-card";
 
-interface NextLevelCardProps {
+interface BlockedLevelCardProps {
   level: number;
   amount: number;
 }
 
-const NextLevelCard = ({ level, amount }: NextLevelCardProps) => {
-  const onClick = () => {
-    console.log("click");
-  };
+const BlockedLevelCard = ({ level, amount }: BlockedLevelCardProps) => {
   return (
     <div className={baseClassName}>
       <div className={`${baseClassName}__title`}>
@@ -32,13 +25,13 @@ const NextLevelCard = ({ level, amount }: NextLevelCardProps) => {
       </div>
       <div className={`${baseClassName}__users`}>
         <div className={`${baseClassName}__user`}>
-          <Image src={NextUserSvg} alt="next user" width={16} height={16} />
+          <Image src={LockSvg} alt="dotted user" width={16} height={16} />
         </div>
         <div className={`${baseClassName}__user`}>
-          <Image src={NextUserSvg} alt="next user" width={16} height={16} />
+          <Image src={LockSvg} alt="dotted user" width={16} height={16} />
         </div>
         <div className={`${baseClassName}__user`}>
-          <Image src={NextUserSvg} alt="next user" width={16} height={16} />
+          <Image src={LockSvg} alt="dotted user" width={16} height={16} />
         </div>
       </div>
       <div className={`${baseClassName}__footer`}>
@@ -52,15 +45,10 @@ const NextLevelCard = ({ level, amount }: NextLevelCardProps) => {
           />
           <p className={`${baseClassName}__users-amount-number`}>3</p>
         </div>
-        <Button
-          className={`${baseClassName}__users-amount-button`}
-          onClick={onClick}
-        >
-          Buy Now
-        </Button>
+        <div className={`${baseClassName}__users-amount-button`}>Block</div>
       </div>
     </div>
   );
 };
 
-export default NextLevelCard;
+export default BlockedLevelCard;

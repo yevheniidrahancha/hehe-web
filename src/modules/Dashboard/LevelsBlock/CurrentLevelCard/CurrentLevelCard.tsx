@@ -1,6 +1,8 @@
 import Image from "next/image";
 import DottedUserSvg from "../../../../assets/dotted-user.svg";
 import PlusSvg from "../../../../assets/plus.svg";
+import EtherumSvg from "../../../../assets/ethereum.svg";
+
 import "./styles.scss";
 
 export type User = {
@@ -23,7 +25,7 @@ const CurrentLevelCard = ({ level, amount, users }: CurrentLevelCardProps) => {
       <div className={`${baseClassName}__title`}>
         <p className={`${baseClassName}__level`}>Level {level}</p>
         <div className={`${baseClassName}__purchased-amount`}>
-          Img
+          <Image src={EtherumSvg} width={20} height={20} alt="etherum" />
           <p className={`${baseClassName}__purchased-amount-number`}>
             {amount}
           </p>

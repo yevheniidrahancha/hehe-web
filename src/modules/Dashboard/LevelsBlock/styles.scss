@@ -5,6 +5,7 @@
   &__balance-card-wrapper {
     position: relative;
     padding-right: 24px;
+    min-width: 390px;
 
     &::after {
       content: " ";
@@ -22,5 +23,6 @@
     padding-left: 24px;
     display: flex;
     gap: 25px;
+    overflow-x: auto;
   }
 }
