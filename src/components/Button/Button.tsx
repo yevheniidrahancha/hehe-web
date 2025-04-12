@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import "./styles.scss";
 import { ReactNode } from "react";
@@ -7,7 +9,7 @@ const baseClassName = "button";
 interface ButtonProps {
   disabled?: boolean;
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
 }
 

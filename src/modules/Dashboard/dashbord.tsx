@@ -1,7 +1,13 @@
+import LevelsBlock from "./LevelsBlock/LevelsBlock";
 import RefferalInfo from "./ReferralInfo/RefferalInfo";
 
 const Dashboard = () => {
-  return <RefferalInfo />;
+  return (
+    <div>
+      <RefferalInfo />;
+      <LevelsBlock />
+    </div>
+  );
 };
 
 export default Dashboard;

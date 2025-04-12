@@ -1,0 +1,140 @@
+.current-level-card {
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #1f3123;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__level {
+    color: #fff;
+    text-align: right;
+    font-family: var(--font-sf-pro-medium);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  &__purchased-amount {
+    display: flex;
+    align-items: center;
+  }
+
+  &__purchased-amount-number {
+    color: #fff;
+    font-family: var(--font-sf-pro-bold);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    margin-left: 4px;
+  }
+
+  &__users-amount {
+    border-radius: 999px;
+    background-color: #2a412f;
+    padding: 3px 6px;
+    display: flex;
+    align-items: center;
+    min-width: 46px;
+  }
+
+  &__footer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__users-amount-image {
+    margin-right: 4px;
+  }
+
+  &__users-amount-number {
+    color: #fff;
+    text-align: center;
+    font-family: var(--font-sf-pro-regular);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  &__users-amount-button {
+    color: #6ab67c;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    border-radius: 999px;
+    background: #151e17;
+    padding: 3px 8px;
+    min-width: 100px;
+  }
+  &__user-list {
+    display: flex;
+    gap: 25px;
+    margin-top: 12px;
+  }
+
+  &__user {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #6ab67c;
+    border-radius: 50%;
+  }
+}
+
+.circular-progress {
+  --size: 36px;
+  --thickness: 2px;
+  --progress: 75%;
+
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: conic-gradient(
+    #6ab67c calc(var(--progress) * 1),
+    rgba(106, 182, 124, 0.3) 0
+  );
+}
+
+.circular-progress::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--size) - var(--thickness) * 2);
+  height: calc(var(--size) - var(--thickness) * 2);
+  background: #1f212d;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.circular-progress__avatar {
+  width: calc(var(--size) - var(--thickness) * 4);
+  height: calc(var(--size) - var(--thickness) * 4);
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 2;
+}
