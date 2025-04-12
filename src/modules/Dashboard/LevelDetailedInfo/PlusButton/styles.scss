@@ -1,0 +1,30 @@
+.plus-button {
+  padding: 4px;
+  background-color: #272937;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__border {
+    border: 2px solid #323444;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #6ab67c;
+    width: 40px;
+    height: 40px;
+  }
+}
