@@ -1,0 +1,32 @@
+.statisticsCard {
+  display: flex;
+  flex-direction: column;
+  max-width: 100px;
+  width: 100px;
+
+  &__title {
+    color: #b2b6da;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  &__value {
+    color: #fff;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    margin-right: 8px;
+  }
+
+  &__note {
+    color: #6ab67c;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 20px;
+    vertical-align: sub;
+  }
+}

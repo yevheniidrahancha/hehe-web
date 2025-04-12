@@ -1,18 +1,24 @@
-.ermaLength {
+.referral-link {
   display: flex;
+  margin-right: 48px;
 
-  &____imgWrapper {
+  &__img-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #242733;
+    margin-right: 16px;
   }
 
-  &__ermaLengthWrapper {
+  &__user-name-wrapper {
     display: flex;
     flex-direction: column;
   }
 
-  &__ermaLengthTitle {
+  &__user-name {
     color: #fff;
     font-size: 24px;
     font-style: normal;
@@ -21,13 +27,14 @@
     margin-bottom: 8px;
   }
 
-  &__linkWrapper {
+  &__link-wrapper {
     display: flex;
     padding: 8px 12px;
     align-items: center;
     border-radius: 8px;
     border: 1px solid #313441;
     background: #1b1d27;
+    margin-bottom: 8px;
   }
 
   &__link {
@@ -43,7 +50,7 @@
     margin-right: 8px;
   }
 
-  &__ermaLengthText {
+  &__text {
     color: #b2b6da;
     font-size: 12px;
     font-style: normal;
@@ -51,7 +58,11 @@
     line-height: 16px;
   }
 
-  &__ermaLengthId {
+  &__copy-button {
+    cursor: pointer;
+  }
+
+  &__user-id {
     color: #2472fd;
   }
 }
