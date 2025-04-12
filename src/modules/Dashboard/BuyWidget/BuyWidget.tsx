@@ -5,6 +5,7 @@ import { useState } from "react";
 import "./styles.scss";
 import BuyLevelWidget from "./BuyLevelWidget/BuyLevelWidget";
 import SwapWidget from "./SwapWidget/SwapWidget";
+import Button from "@/components/Button/Button";
 
 const baseClassName = "buy-widget";
 
@@ -47,6 +48,7 @@ const BuyWidget = () => {
       </div>
       {selectedTab === BuyWidgetTabs.BUYLEVELS && <BuyLevelWidget />}
       {selectedTab === BuyWidgetTabs.SWAP && <SwapWidget />}
+      <Button className={`${baseClassName}__button-buy-now `}>Buy Now</Button>
     </div>
   );
 };

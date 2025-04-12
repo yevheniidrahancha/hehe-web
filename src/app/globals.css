@@ -29,11 +29,12 @@
   font-display: swap;
 }
 
+
 :root {
   --font-sf-pro-medium: 'SF Pro Display medium', sans-serif;
   --font-sf-pro-regular: 'SF Pro Display regular', sans-serif;
   --font-sf-pro-bold: 'SF Pro Display bold', sans-serif;
-
+  --font-sf-pro-black: 'SF Pro Display black', sans-serif;
 }
 
 @theme inline {
@@ -52,5 +53,5 @@
 
 body {
   font-family: var(--font-sf-pro-medium);
-  overflow: hidden;
+  overflow-x: hidden;
 }
