@@ -1,11 +1,17 @@
-import ErmaLength from "./ErmaLength/ErmaLength";
+import ReferralLink from "./ReferralLink/ReferralLink";
+import Reward from "./Reward/Reward";
+import Statistics from "./Statistics/Statistics";
 
-const baseClassName = "refferalInfo";
+import "./styles.scss";
+
+const baseClassName = "refferal-info";
 
 const RefferalInfo = () => {
   return (
     <div className={baseClassName}>
-      <ErmaLength />
+      <ReferralLink />
+      <Reward />
+      <Statistics />
     </div>
   );
 };

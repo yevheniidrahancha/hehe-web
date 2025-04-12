@@ -1,0 +1,62 @@
+.reward {
+  display: flex;
+  padding: 16px;
+  border-radius: 12px;
+  background: #1f212d;
+  max-width: 406px;
+  width: 100%;
+  margin-right: 24px;
+
+  &__claim-reward-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-right: 16px;
+    border-right: 1px solid #2d3040;
+  }
+
+  &__claim-reward-img {
+    margin-right: 8px;
+  }
+
+  &__claim-reward-value-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  &__claim-reward-total {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+  }
+
+  &__claim-reward-value-small {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0.32px;
+  }
+
+  &__claim-reward-button {
+    max-width: 158px;
+    width: 100%;
+  }
+
+  &__claim-reward-text {
+    color: #b2b6da;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  &__claim-reward-value-large {
+    color: #fff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+  }
+}
