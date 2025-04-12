@@ -1,0 +1,124 @@
+.next-level-card {
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #1f212d;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__level {
+    color: #fff;
+    text-align: right;
+    font-family: var(--font-sf-pro-medium);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  &__purchased-amount {
+    display: flex;
+    align-items: center;
+  }
+
+  &__purchased-amount-number {
+    color: #fff;
+    font-family: var(--font-sf-pro-bold);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    margin-left: 4px;
+  }
+
+  &__users {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 12px;
+  }
+
+  &__user {
+    display: flex;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #272937;
+  }
+
+  &__footer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__users-amount-image {
+    margin-right: 4px;
+  }
+
+  &__users-amount-number {
+    color: #fff;
+    text-align: center;
+    font-family: var(--font-sf-pro-regular);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  &__users-amount-button {
+    color: #6ab67c;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    border-radius: 999px;
+    background: #151e17;
+    padding: 3px 8px;
+    min-width: 100px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__user-list {
+    display: flex;
+    gap: 25px;
+    margin-top: 12px;
+  }
+
+  &__user {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #6ab67c;
+    border-radius: 50%;
+  }
+
+  &__users-amount {
+    border-radius: 999px;
+    background-color: #272937;
+    padding: 3px 6px;
+    display: flex;
+    align-items: center;
+    min-width: 46px;
+  }
+}
