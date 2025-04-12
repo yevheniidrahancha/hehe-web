@@ -1,0 +1,72 @@
+.balance-card {
+  border-radius: 12px;
+  background: #1f212d;
+  padding: 18px 16px;
+  display: flex;
+
+  &__bullets {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-right: 24px;
+  }
+
+  &__item {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background: #2c2e3f;
+
+    &--fail {
+      background-color: #d05052;
+    }
+
+    &--success {
+      background-color: #6ab67c;
+    }
+
+    &--froze {
+      background-color: #1f3123;
+      border: 1px solid #6ab67c;
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__name {
+    color: #b2b6da;
+    font-family: var(--font-sf-pro-medium);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    margin-bottom: 2px;
+  }
+
+  &__amount {
+    display: flex;
+    margin-bottom: 22px;
+  }
+
+  &__amount-text {
+    font-family: var(--font-sf-pro-bold);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    color: #fff;
+  }
+
+  &__profits {
+    color: #b2b6da;
+    text-align: right;
+    font-family: var(--font-sf-pro-medium);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
+}
