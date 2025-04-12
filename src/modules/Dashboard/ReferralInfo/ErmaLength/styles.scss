@@ -1,0 +1,57 @@
+.ermaLength {
+  display: flex;
+
+  &____imgWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__ermaLengthWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__ermaLengthTitle {
+    color: #fff;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    margin-bottom: 8px;
+  }
+
+  &__linkWrapper {
+    display: flex;
+    padding: 8px 12px;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #313441;
+    background: #1b1d27;
+  }
+
+  &__link {
+    overflow: hidden;
+    color: #b0b4c6;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    width: 250px;
+    white-space: nowrap;
+    margin-right: 8px;
+  }
+
+  &__ermaLengthText {
+    color: #b2b6da;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  &__ermaLengthId {
+    color: #2472fd;
+  }
+}
