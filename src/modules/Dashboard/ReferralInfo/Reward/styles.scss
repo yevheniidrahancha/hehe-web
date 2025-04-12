@@ -7,30 +7,30 @@
   width: 100%;
   margin-right: 24px;
 
-  &__claimRewardWrapper {
+  &__claim-reward-wrapper {
     display: flex;
     flex-direction: column;
     padding-right: 16px;
     border-right: 1px solid #2d3040;
   }
 
-  &__claimRewardImg {
+  &__claim-reward-img {
     margin-right: 8px;
   }
 
-  &__claimRewardValueWrapper {
+  &__claim-reward-value-wrapper {
     display: flex;
     align-items: center;
     margin-bottom: 8px;
   }
 
-  &__claimRewardTotal {
+  &__claim-reward-total {
     display: flex;
     flex-direction: column;
     padding-left: 16px;
   }
 
-  &__claimRewardValueSmall {
+  &__claim-reward-value-small {
     color: #fff;
     font-size: 16px;
     font-style: normal;
@@ -39,12 +39,12 @@
     letter-spacing: 0.32px;
   }
 
-  &__claimRewardButton {
+  &__claim-reward-button {
     max-width: 158px;
     width: 100%;
   }
 
-  &__claimRewardText {
+  &__claim-reward-text {
     color: #b2b6da;
     font-size: 12px;
     font-style: normal;
@@ -52,9 +52,8 @@
     line-height: 16px;
   }
 
-  &__claimRewardValueLarge {
+  &__claim-reward-value-large {
     color: #fff;
-
     font-size: 20px;
     font-style: normal;
     font-weight: 400;

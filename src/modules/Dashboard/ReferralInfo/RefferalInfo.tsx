@@ -4,7 +4,7 @@ import Statistics from "./Statistics/Statistics";
 
 import "./styles.scss";
 
-const baseClassName = "refferalInfo";
+const baseClassName = "refferal-info";
 
 const RefferalInfo = () => {
   return (

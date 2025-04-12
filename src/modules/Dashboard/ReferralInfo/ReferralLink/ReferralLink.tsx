@@ -7,7 +7,7 @@ import SmileIcon from "../../../../assets/smile.svg";
 import "./styles.scss";
 import { useState } from "react";
 
-const baseClassName = "referralLink";
+const baseClassName = "referral-link";
 const link = "https://hehe.com/ref=$9295xj-3928x03pox039jfh930_039x893";
 
 const ReferralLink = () => {
@@ -22,16 +22,16 @@ const ReferralLink = () => {
   };
   return (
     <div className={baseClassName}>
-      <div className={`${baseClassName}__imgWrapper`}>
+      <div className={`${baseClassName}__img-wrapper`}>
         <Image src={SmileIcon} alt="smile icon" width={48} height={48} />
       </div>
-      <div className={`${baseClassName}__userNameWrapper`}>
-        <p className={`${baseClassName}__userName`}> ermalength</p>
-        <div className={`${baseClassName}__linkWrapper`}>
+      <div className={`${baseClassName}__user-name-wrapper`}>
+        <p className={`${baseClassName}__user-name`}> ermalength</p>
+        <div className={`${baseClassName}__link-wrapper`}>
           <p className={`${baseClassName}__link`}>{link}</p>
 
           <button
-            className={`${baseClassName}__copyButton`}
+            className={`${baseClassName}__copy-button`}
             onClick={handleCopy}
             aria-label="Copy to clipboard"
           >
@@ -40,7 +40,7 @@ const ReferralLink = () => {
         </div>
         <p className={`${baseClassName}__text`}>
           Invited 01.05.2024 by{" "}
-          <span className={`${baseClassName}__userId`}>ID 2411</span>
+          <span className={`${baseClassName}__user-id`}>ID 2411</span>
         </p>
       </div>
     </div>

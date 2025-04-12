@@ -7,7 +7,7 @@ const baseClassName = "button";
 interface ButtonProps {
   disabled?: boolean;
   children: ReactNode;
-  onClick?: () => void;
+  onClick: () => void;
   className?: string;
 }
 
