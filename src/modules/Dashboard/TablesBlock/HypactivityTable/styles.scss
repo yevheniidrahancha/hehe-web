@@ -1,0 +1,14 @@
+.hypactivity-table {
+  &__cell-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: 10px;
+  }
+
+  &__text-id {
+    color: #7f84eb;
+  }
+}

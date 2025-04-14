@@ -1,0 +1,16 @@
+.leaderboard-table {
+  &__cell-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__rank-gold {
+    color: #bdd269;
+  }
+  &__rank-silver {
+    color: #b0b4c6;
+  }
+  &__rank-bronze {
+    color: #e68c3c;
+  }
+}

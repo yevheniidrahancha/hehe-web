@@ -47,8 +47,8 @@ const mockData: TradeRow[] = [
   {
     date: 1713099200000,
     type: "Sell",
-    price: 0.01892,
-    total: 1388.6,
+    price: 0.0181,
+    total: 104.2,
     priceSol: 0.01544,
     amountHype: 1300260900,
     rank: "octopus",
@@ -58,7 +58,7 @@ const mockData: TradeRow[] = [
     date: 1713098929000,
     type: "Sell",
     price: 0.01828,
-    total: 104.2,
+    total: 1388.6,
     priceSol: 0.0001542,
     amountHype: 1847120492,
     rank: "Hamster",
@@ -67,8 +67,9 @@ const mockData: TradeRow[] = [
   {
     date: 1713098770000,
     type: "Buy",
-    price: 0.0181,
+
     total: 93.19,
+    price: 0.01892,
     priceSol: 0.0153,
     amountHype: 909840194,
     rank: "Fish",
@@ -222,17 +223,20 @@ const TradeHistoryTable = () => {
                     {item.type}
                   </p>
                 </TableCell>
-                <TableCell>${renderFormattedNumber(item.price)}</TableCell>
+                <TableCell>
+                  <p>${renderFormattedNumber(item.price)}</p>
+                </TableCell>
                 <TableCell>
                   <div className={`${baseClassName}__total`}>
-                    ${item.total} {getIconByRank(item.rank as Ranks)}
+                    <p>${item.total}</p>
+                    {getIconByRank(item.rank as Ranks)}
                   </div>
                 </TableCell>
                 <TableCell>$ {renderFormattedNumber(item.priceSol)}</TableCell>
                 <TableCell>{item.amountHype.toLocaleString("en-US")}</TableCell>
                 <TableCell>
                   <div className={`${baseClassName}__marker`}>
-                    {item.marker}
+                    <p>{item.marker}</p>
                     <CopyToClipboard
                       imageSrc={CopyIcon}
                       textToCopy={item.marker}

@@ -5,6 +5,9 @@ import { SyntheticEvent, useState } from "react";
 
 import HoldersTable from "./HoldersTable/HoldersTable";
 import TradeHistoryTable from "./TradeHistoryTable/TradeHistoryTable";
+import LeaderboardTable from "./LeaderboardTable/LeaderboardTable";
+import HypactivityTable from "./HypactivityTable/HypactivityTable";
+
 import "./styles.scss";
 
 const baseClassName = "tables-block";
@@ -40,8 +43,13 @@ const TablesBlock = () => {
           value={selectedTabValue}
           onChange={onChangeSelectedTabValue}
         />
-        <HoldersTable />
-        <TradeHistoryTable />
+      </div>
+
+      <div className={`${baseClassName}__content`}>
+        {selectedTabValue === TabsValue.TRADE_HISTORY && <TradeHistoryTable />}
+        {selectedTabValue === TabsValue.HOLDERS && <HoldersTable />}
+        {selectedTabValue === TabsValue.HYPACTIVITY && <HypactivityTable />}
+        {selectedTabValue === TabsValue.LEADERBOARD && <LeaderboardTable />}
       </div>
     </div>
   );

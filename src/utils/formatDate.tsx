@@ -10,3 +10,21 @@ export const formatDate = (ms: number) => {
     </>
   );
 };
+
+export const formatDateWithDDMMYYTime = (date: number | string) => {
+  const dateValue = new Date(
+    typeof date === "string" ? Date.parse(date) : date
+  );
+
+  const formattedDate = dateValue.toLocaleDateString("ru-RU");
+  const formattedTime = dateValue.toLocaleTimeString("ru-RU", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return (
+    <span>
+      <span style={{ color: "#6AB67C" }}>{formattedDate}</span> {formattedTime}
+    </span>
+  );
+};
