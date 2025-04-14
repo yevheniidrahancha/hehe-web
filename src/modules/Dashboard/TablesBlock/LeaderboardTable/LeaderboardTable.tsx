@@ -5,6 +5,7 @@ import CoinIcon from "../../../../assets/coin.svg";
 import Image from "next/image";
 import LinkRedirect from "@/components/LinkRedirect/LinkRedirect";
 import "./styles.scss";
+import clsx from "clsx";
 
 const baseClassName = "leaderboard-table";
 
@@ -49,15 +50,11 @@ const LeaderboardTable = () => {
           <TableRow key={index}>
             <TableCell>
               <p
-                className={`${baseClassName}__rank${
-                  index === 0
-                    ? "-gold"
-                    : index === 1
-                    ? "-silver"
-                    : index === 2
-                    ? "-bronze"
-                    : ""
-                }`}
+                className={clsx({
+                  [`${baseClassName}__rank-gold`]: index === 0,
+                  [`${baseClassName}__rank-silver`]: index === 1,
+                  [`${baseClassName}__rank-bronze`]: index === 2,
+                })}
               >
                 {index + 1}
               </p>
