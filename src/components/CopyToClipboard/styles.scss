@@ -1,0 +1,16 @@
+.copy-to-clipboard {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 40px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  margin-left: 10px;
+}
+
+.copied-message {
+  font-size: 12px;
+  color: #6ab67c;
+  font-weight: 500;
+}

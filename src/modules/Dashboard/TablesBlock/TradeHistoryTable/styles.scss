@@ -1,0 +1,27 @@
+.trade-history {
+  &__header-text {
+    margin-right: 4px;
+  }
+  &__type-sell {
+    color: #ff8475;
+    text-transform: uppercase;
+  }
+
+  &__type-buy {
+    color: #6ab67c;
+  }
+
+  &__marker {
+    display: flex;
+    color: #6ab67c;
+  }
+
+  &__total {
+    display: flex;
+  }
+
+  &__copyIcon {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}

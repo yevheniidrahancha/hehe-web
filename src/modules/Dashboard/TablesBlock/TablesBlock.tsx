@@ -2,11 +2,10 @@
 
 import Tabs, { Tab } from "@/components/Tabs/Tabs";
 import { SyntheticEvent, useState } from "react";
-import "./styles.scss";
-import Table from "@/components/Table/Table";
-import { TableRow } from "@mui/material";
-import TableCell from "@/components/TableCell/TableCell";
+
 import HoldersTable from "./HoldersTable/HoldersTable";
+import TradeHistoryTable from "./TradeHistoryTable/TradeHistoryTable";
+import "./styles.scss";
 
 const baseClassName = "tables-block";
 
@@ -42,6 +41,7 @@ const TablesBlock = () => {
           onChange={onChangeSelectedTabValue}
         />
         <HoldersTable />
+        <TradeHistoryTable />
       </div>
     </div>
   );
