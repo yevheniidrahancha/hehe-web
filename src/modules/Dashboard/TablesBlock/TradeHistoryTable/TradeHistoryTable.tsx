@@ -223,17 +223,20 @@ const TradeHistoryTable = () => {
                     {item.type}
                   </p>
                 </TableCell>
-                <TableCell>${renderFormattedNumber(item.price)}</TableCell>
+                <TableCell>
+                  <p>${renderFormattedNumber(item.price)}</p>
+                </TableCell>
                 <TableCell>
                   <div className={`${baseClassName}__total`}>
-                    ${item.total} {getIconByRank(item.rank as Ranks)}
+                    <p>${item.total}</p>
+                    {getIconByRank(item.rank as Ranks)}
                   </div>
                 </TableCell>
                 <TableCell>$ {renderFormattedNumber(item.priceSol)}</TableCell>
                 <TableCell>{item.amountHype.toLocaleString("en-US")}</TableCell>
                 <TableCell>
                   <div className={`${baseClassName}__marker`}>
-                    {item.marker}
+                    <p>{item.marker}</p>
                     <CopyToClipboard
                       imageSrc={CopyIcon}
                       textToCopy={item.marker}

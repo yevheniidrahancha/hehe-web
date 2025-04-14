@@ -64,9 +64,11 @@ const HoldersTable = () => {
                 <LinearProgress value={80} />
               </div>
             </TableCell>
-            <TableCell>{amount}</TableCell>
             <TableCell>
-              ${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+              <p>{amount}</p>
+            </TableCell>
+            <TableCell>
+              <p>${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</p>
             </TableCell>
           </TableRow>
         ))}

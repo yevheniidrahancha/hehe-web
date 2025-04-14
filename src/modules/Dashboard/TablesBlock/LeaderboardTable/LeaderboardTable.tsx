@@ -48,26 +48,22 @@ const LeaderboardTable = () => {
         {leaderboardSoetedData.map(({ name, invitedBy, rewards }, index) => (
           <TableRow key={index}>
             <TableCell>
-              <div className={`${baseClassName}__cell-content`}>
-                <p
-                  className={`${baseClassName}__rank${
-                    index === 0
-                      ? "-gold"
-                      : index === 1
-                      ? "-silver"
-                      : index === 2
-                      ? "-bronze"
-                      : ""
-                  }`}
-                >
-                  {index + 1}
-                </p>
-              </div>
+              <p
+                className={`${baseClassName}__rank${
+                  index === 0
+                    ? "-gold"
+                    : index === 1
+                    ? "-silver"
+                    : index === 2
+                    ? "-bronze"
+                    : ""
+                }`}
+              >
+                {index + 1}
+              </p>
             </TableCell>
             <TableCell>
-              <div className={`${baseClassName}__cell-content`}>
-                <p className={`${baseClassName}__text`}>{name}</p>
-              </div>
+              <p className={`${baseClassName}__text`}>{name}</p>
             </TableCell>
             <TableCell>
               <LinkRedirect url={invitedBy} />

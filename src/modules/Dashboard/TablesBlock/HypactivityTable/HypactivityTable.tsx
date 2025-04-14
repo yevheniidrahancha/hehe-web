@@ -65,26 +65,18 @@ const HypactivityTable = () => {
           ({ date, id, program, level, transaction, event }, index) => (
             <TableRow key={index}>
               <TableCell>
-                <div className={`${baseClassName}__cell-content`}>
-                  <p className={`${baseClassName}__text`}>
-                    {formatDateWithDDMMYYTime(date)}
-                  </p>
-                </div>
+                <p className={`${baseClassName}__text`}>
+                  {formatDateWithDDMMYYTime(date)}
+                </p>
               </TableCell>
               <TableCell>
-                <div className={`${baseClassName}__cell-content`}>
-                  <p className={`${baseClassName}__text-id`}>{id}</p>
-                </div>
+                <p className={`${baseClassName}__text-id`}>{id}</p>
               </TableCell>
               <TableCell>
-                <div className={`${baseClassName}__cell-content`}>
-                  <p className={`${baseClassName}__text`}>{program}</p>
-                </div>
+                <p className={`${baseClassName}__text`}>{program}</p>
               </TableCell>
               <TableCell>
-                <div className={`${baseClassName}__cell-content`}>
-                  <p className={`${baseClassName}__text`}>{level}</p>
-                </div>
+                <p className={`${baseClassName}__text`}>{level}</p>
               </TableCell>
               <TableCell>
                 <div className={`${baseClassName}__cell-content`}>
@@ -97,9 +89,7 @@ const HypactivityTable = () => {
                 </div>
               </TableCell>
               <TableCell>
-                <div className={`${baseClassName}__cell-content`}>
-                  <p className={`${baseClassName}__text`}>{event}</p>
-                </div>
+                <p className={`${baseClassName}__text`}>{event}</p>
               </TableCell>
             </TableRow>
           )
