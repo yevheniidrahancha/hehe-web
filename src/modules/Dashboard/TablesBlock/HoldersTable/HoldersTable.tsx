@@ -2,6 +2,8 @@ import LinearProgress from "@/components/LinearProgress/LinearProgress";
 import Table from "@/components/Table/Table";
 import TableCell from "@/components/TableCell/TableCell";
 import { TableRow } from "@mui/material";
+import CopyToClipboard from "@/components/CopyToClipboard/CopyToClipboard";
+import CopyIcon from "../../../../assets/copy-green.svg";
 import "./styles.scss";
 
 const baseClassName = "holders-table";
@@ -48,7 +50,12 @@ const HoldersTable = () => {
           <TableRow key={index}>
             <TableCell>
               <div className={`${baseClassName}__cell-content`}>
-                <p className={`${baseClassName}__text`}>{address}</p>Icon
+                <p className={`${baseClassName}__text`}>{address}</p>
+                <CopyToClipboard
+                  altText="copy"
+                  textToCopy={address}
+                  imageSrc={CopyIcon}
+                />
               </div>
             </TableCell>
             <TableCell>
