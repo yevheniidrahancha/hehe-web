@@ -1,0 +1,10 @@
+.holders-table {
+  &__cell-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: 10px;
+  }
+}
