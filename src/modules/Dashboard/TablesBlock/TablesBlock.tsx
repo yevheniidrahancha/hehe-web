@@ -2,8 +2,10 @@
 
 import Tabs, { Tab } from "@/components/Tabs/Tabs";
 import { SyntheticEvent, useState } from "react";
+
+import HoldersTable from "./HoldersTable/HoldersTable";
+import TradeHistoryTable from "./TradeHistoryTable/TradeHistoryTable";
 import "./styles.scss";
-import TableTradeHistory from "./TableTradeHistory/TableTradeHistory";
 
 const baseClassName = "tables-block";
 
@@ -38,8 +40,9 @@ const TablesBlock = () => {
           value={selectedTabValue}
           onChange={onChangeSelectedTabValue}
         />
+        <HoldersTable />
+        <TradeHistoryTable />
       </div>
-      <TableTradeHistory />
     </div>
   );
 };
