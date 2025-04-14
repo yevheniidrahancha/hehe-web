@@ -6,6 +6,7 @@ import { SyntheticEvent, useState } from "react";
 import HoldersTable from "./HoldersTable/HoldersTable";
 import TradeHistoryTable from "./TradeHistoryTable/TradeHistoryTable";
 import "./styles.scss";
+import LeaderboardTable from "./LeaderboardTable/LeaderboardTable";
 
 const baseClassName = "tables-block";
 
@@ -42,6 +43,7 @@ const TablesBlock = () => {
         />
         <HoldersTable />
         <TradeHistoryTable />
+        <LeaderboardTable />
       </div>
     </div>
   );
