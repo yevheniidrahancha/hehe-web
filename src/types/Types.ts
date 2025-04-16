@@ -23,3 +23,8 @@ export type TradeRow = {
   rank: string;
   marker: string;
 };
+
+export enum BuyWidgetTabs {
+  BUYLEVELS = "Buy Levels",
+  SWAP = "Swap",
+}

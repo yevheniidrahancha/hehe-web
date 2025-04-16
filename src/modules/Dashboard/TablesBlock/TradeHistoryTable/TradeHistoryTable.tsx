@@ -15,13 +15,14 @@ import TableCell from "@/components/TableCell/TableCell";
 import TableHeaderCell from "@/components/TableHeaderCell/TableHeaderCell";
 import { getIconByRank } from "@/utils/getIconByRank";
 import { Ranks } from "@/types/Ranks";
-import { renderFormattedNumber } from "@/utils/formatScientificNumber";
+
 import { SortDirection, SortKey, TradeRow } from "@/types/Types";
 import { sortTradeHistory } from "@/utils/sortTradeHistory";
 import { formatDate } from "@/utils/formatDate";
 import CopyIcon from "../../../../assets/copy-green.svg";
 import CopyToClipboard from "@/components/CopyToClipboard/CopyToClipboard";
 import "./styles.scss";
+import { formatScientificNumber } from "@/utils/formatScientificNumber";
 
 const baseClassName = "trade-history";
 
@@ -224,7 +225,7 @@ const TradeHistoryTable = () => {
                   </p>
                 </TableCell>
                 <TableCell>
-                  <p>${renderFormattedNumber(item.price)}</p>
+                  <p>${formatScientificNumber(item.price)}</p>
                 </TableCell>
                 <TableCell>
                   <div className={`${baseClassName}__total`}>
@@ -232,7 +233,7 @@ const TradeHistoryTable = () => {
                     {getIconByRank(item.rank as Ranks)}
                   </div>
                 </TableCell>
-                <TableCell>$ {renderFormattedNumber(item.priceSol)}</TableCell>
+                <TableCell>$ {formatScientificNumber(item.priceSol)}</TableCell>
                 <TableCell>{item.amountHype.toLocaleString("en-US")}</TableCell>
                 <TableCell>
                   <div className={`${baseClassName}__marker`}>

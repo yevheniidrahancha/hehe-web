@@ -3,35 +3,21 @@ export const formatScientificNumber = (num: number, chart = false) => {
     return num.toFixed(4);
   }
 
-  const decimalString = num.toFixed(10).replace(/0+$/, "");
-  const [integerPart, decimalPart] = decimalString.split(".");
+  const fixed = num.toFixed(12);
+  const match = fixed.match(/^0\.0*(\d+)/);
+  if (!match) return fixed;
 
-  if (!decimalPart) return integerPart;
-
-  const leadingZerosMatch = decimalPart.match(/^0+/);
-  const leadingZerosCount = leadingZerosMatch ? leadingZerosMatch[0].length : 0;
-
-  const significantDigits = decimalPart.slice(
-    leadingZerosCount,
-    leadingZerosCount + 4
-  );
+  const significantDigits = match[1].slice(0, 4); // первые 4 цифры
+  const zeroCount = fixed.split(".")[1].match(/^0*/)?.[0].length || 0;
 
   if (chart) {
-    return `0.${"0".repeat(leadingZerosCount)}${significantDigits}`;
+    return `0.${"0".repeat(zeroCount)}${significantDigits}`;
   }
 
-  return `0.0<sub>${leadingZerosCount}</sub>${significantDigits}`;
-};
-export const renderFormattedNumber = (num: number) => {
-  const formattedString = formatScientificNumber(num, false);
+  // Версия с подстрочным числом нулей
+  const subscript = [...zeroCount.toString()]
+    .map((d) => String.fromCharCode(0x2080 + parseInt(d)))
+    .join("");
 
-  return formattedString
-    .split(/(<sub>\d+<\/sub>)/g)
-    .map((part, index) =>
-      part.startsWith("<sub>") ? (
-        <sub key={index}>{part.replace(/<\/?sub>/g, "")}</sub>
-      ) : (
-        <span key={index}>{part}</span>
-      )
-    );
+  return `0.0${subscript}${significantDigits}`;
 };
