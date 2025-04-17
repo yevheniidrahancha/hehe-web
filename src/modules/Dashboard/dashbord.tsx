@@ -1,8 +1,13 @@
 "use client";
 
+<<<<<<< HEAD
 import SelectTokenModal from "@/components/SelectCoinModal/SelectTokenModal";
+=======
+import { useState } from "react";
+>>>>>>> main
 import BuyWidget from "./BuyWidget/BuyWidget";
-import LevelDetailedInfo from "./LevelDetailedInfo/LevelDetailedInfo";
+import LevelChartWidget from "./LevelChartSwitcher/LevelChartSwitcher";
+
 import LevelsBlock from "./LevelsBlock/LevelsBlock";
 import RefferalInfo from "./ReferralInfo/RefferalInfo";
 import TablesBlock from "./TablesBlock/TablesBlock";
@@ -32,15 +37,22 @@ const mockTokens = [
     balance: "120.00",
   },
 ];
+export enum BuyWidgetTabs {
+  BUYLEVELS = "BUYLEVELS",
+  SWAP = "SWAP",
+}
 
 const Dashboard = () => {
+  const [selectedTab, setSelectedTab] = useState<BuyWidgetTabs>(
+    BuyWidgetTabs.BUYLEVELS
+  );
   return (
     <div>
       <RefferalInfo />
       <LevelsBlock />
       <div className={`${baseClassName}__content`}>
-        <BuyWidget />
-        <LevelDetailedInfo selectedLevel={1} />
+        <BuyWidget setSelectedTab={setSelectedTab} selectedTab={selectedTab} />
+        <LevelChartWidget selectedTab={selectedTab} />
       </div>
       <TablesBlock />
       <SelectTokenModal

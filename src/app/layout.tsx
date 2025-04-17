@@ -36,7 +36,6 @@ export default function RootLayout({
         className={`${lilitaOne.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-
         <div className="layout">{children}</div>
       </body>
     </html>

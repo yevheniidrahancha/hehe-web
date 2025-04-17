@@ -25,3 +25,33 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 768px) {
+  .trade-history {
+    display: none;
+  }
+  .trade-history-mobile {
+    &__card {
+      padding: 16px 8px;
+      border-bottom: 1px solid #3e4257;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    &__label {
+      color: #797a91;
+      font-family: var(--font-sf-pro-regular);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+    }
+
+    &__column {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

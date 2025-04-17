@@ -9,6 +9,8 @@ import LeaderboardTable from "./LeaderboardTable/LeaderboardTable";
 import HypactivityTable from "./HypactivityTable/HypactivityTable";
 
 import "./styles.scss";
+import clsx from "clsx";
+import MobileTable from "@/components/MobileTable/MobileTable";
 
 const baseClassName = "tables-block";
 
@@ -37,6 +39,21 @@ const TablesBlock = () => {
 
   return (
     <div className={baseClassName}>
+      <div className={`${baseClassName}__mobile-content`}>
+        <div className={`${baseClassName}__mobile-tabs`}>
+          {tabs.map((item) => (
+            <button
+              className={clsx(`${baseClassName}__mobile-tab`, {
+                [`${baseClassName}__mobile-tab--active`]:
+                  item.value === selectedTabValue,
+              })}
+              onClick={() => setSelectedTabValue(item.value as TabsValue)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      </div>
       <div className={`${baseClassName}__tabs-wrapper`}>
         <Tabs
           tabs={tabs}
@@ -44,7 +61,6 @@ const TablesBlock = () => {
           onChange={onChangeSelectedTabValue}
         />
       </div>
-
       <div className={`${baseClassName}__content`}>
         {selectedTabValue === TabsValue.TRADE_HISTORY && <TradeHistoryTable />}
         {selectedTabValue === TabsValue.HOLDERS && <HoldersTable />}

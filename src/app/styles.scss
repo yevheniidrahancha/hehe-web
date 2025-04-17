@@ -3,10 +3,14 @@ body {
 }
 
 .layout {
-  padding-top: 48px;
-  max-width: 1280px;
+  max-width: 1360px;
   width: 100%;
   margin: 0 auto;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    padding: 20px;
+  }
 }

@@ -1,8 +1,8 @@
 .level-detailed-info {
-  padding: 10px;
   border-radius: 12px;
   background: #1f212d;
   width: 727px;
+  padding: 10px;
 
   &__card {
     border: 1px dashed rgba(106, 182, 124, 0.4);
@@ -47,8 +47,8 @@
     padding: 30px;
     border: 1px dashed #343647;
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,8 +57,8 @@
   &__dashed-elipse {
     background: url("../../../assets/dashed-elipse.svg") no-repeat center center;
     background-size: contain;
-    width: 320px;
-    height: 320px;
+    width: 200px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,8 +70,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 280px;
-    height: 280px;
+    width: 180px;
+    height: 180px;
   }
 
   &__user {

@@ -6,6 +6,7 @@
   max-width: 406px;
   width: 100%;
   margin-right: 24px;
+  margin-bottom: 0;
 
   &__claim-reward-wrapper {
     display: flex;
@@ -58,5 +59,25 @@
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reward {
+    margin-right: 0;
+    margin-bottom: 8px;
+    max-width: unset;
+
+    &__claim-reward-wrapper {
+      width: 50%;
+    }
+
+    &__claim-reward-total {
+      width: 50%;
+    }
+
+    &__claim-reward-value-small {
+      font-size: 14px;
+    }
   }
 }

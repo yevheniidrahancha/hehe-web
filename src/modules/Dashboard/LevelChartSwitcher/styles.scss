@@ -1,0 +1,11 @@
+.level-chart {
+  max-width: 727px;
+  width: 100%;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .level-chart {
+    max-width: unset;
+  }
+}

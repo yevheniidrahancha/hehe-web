@@ -1,8 +1,45 @@
 .tables-block {
   border-radius: 8px;
   overflow: hidden;
+  padding: 0;
 
   &__tabs-wrapper {
     background-color: #2f3344;
+  }
+
+  &__mobile-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  &__mobile-tab {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #414559;
+    background: #373b4e;
+    color: #797a91;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &--active {
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .tables-block {
+    background-color: #2f3344;
+    padding: 10px 8px;
+
+    &__tabs-wrapper {
+      display: none;
+    }
   }
 }

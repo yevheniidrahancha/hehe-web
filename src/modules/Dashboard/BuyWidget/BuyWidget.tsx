@@ -1,24 +1,21 @@
 "use client";
 
 import clsx from "clsx";
-import { useState } from "react";
+
 import "./styles.scss";
 import BuyLevelWidget from "./BuyLevelWidget/BuyLevelWidget";
 import SwapWidget from "./SwapWidget/SwapWidget";
 import Button from "@/components/Button/Button";
+import { BuyWidgetTabs } from "../Dashbord";
 
 const baseClassName = "buy-widget";
 
-enum BuyWidgetTabs {
-  BUYLEVELS = "Buy Levels",
-  SWAP = "Swap",
+interface BuyWidgetProps {
+  selectedTab: BuyWidgetTabs;
+  setSelectedTab: React.Dispatch<React.SetStateAction<BuyWidgetTabs>>;
 }
 
-const BuyWidget = () => {
-  const [selectedTab, setSelectedTab] = useState<
-    BuyWidgetTabs.BUYLEVELS | BuyWidgetTabs.SWAP
-  >(BuyWidgetTabs.BUYLEVELS);
-
+const BuyWidget = ({ selectedTab, setSelectedTab }: BuyWidgetProps) => {
   const handleTabChange = (
     tab: BuyWidgetTabs.BUYLEVELS | BuyWidgetTabs.SWAP
   ) => {

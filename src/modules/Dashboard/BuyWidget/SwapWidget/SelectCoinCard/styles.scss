@@ -1,0 +1,81 @@
+.select-coin-card {
+  display: flex;
+  width: 100%;
+  padding: 8px 0px;
+  border-radius: 12px;
+  background: #1f212c;
+  flex-direction: column;
+  margin-bottom: 8px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px 8px 12px;
+    border-bottom: 1px solid #2a2c3a;
+  }
+
+  &__text {
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    margin-right: 8px;
+  }
+
+  &__notes-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  &__walet-img {
+    margin-right: 4px;
+  }
+
+  &__note {
+    display: flex;
+    padding: 4px 8px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #292b39;
+    color: #888ca5;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    margin-right: 4px;
+  }
+
+  &__coin-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px 0 12px;
+  }
+
+  &__coin-select {
+    max-width: 100px;
+  }
+
+  &__coin-value-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  &__coin-value {
+    color: #fff;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+  }
+
+  &__currency {
+    color: #888ca5;
+    font-family: "SF Pro Display";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+  }
+}
