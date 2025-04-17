@@ -128,129 +128,213 @@ const TradeHistoryTable = () => {
   const sortedData = sortTradeHistory(mockData, sortConfig, typeSort);
 
   return (
-    <div className={baseClassName}>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableHeaderCell>
-                <TableSortLabel
-                  active={sortConfig.key === SortKey.DATE}
-                  direction={sortConfig.direction || SortDirection.ASC}
-                  onClick={() => handleSort(SortKey.DATE)}
-                  IconComponent={() => null}
-                  sx={sortLabelStyles}
-                >
-                  <p className={`${baseClassName}__header-text`}>Date</p>
-                  <Image src={FilterIcon} width={12} height={12} alt="filter" />
-                </TableSortLabel>
-              </TableHeaderCell>
-
-              <TableHeaderCell>
-                <TableSortLabel
-                  IconComponent={() => null}
-                  onClick={toggleTypeSort}
-                  sx={sortLabelStyles}
-                >
-                  <p className={`${baseClassName}__header-text`}>Type</p>
-                  <Image src={FilterIcon} width={12} height={12} alt="filter" />
-                </TableSortLabel>
-              </TableHeaderCell>
-
-              <TableHeaderCell>
-                <TableSortLabel
-                  active={sortConfig.key === SortKey.PRICE}
-                  direction={sortConfig.direction || SortDirection.ASC}
-                  onClick={() => handleSort(SortKey.PRICE)}
-                  IconComponent={() => null}
-                  sx={sortLabelStyles}
-                >
-                  <p className={`${baseClassName}__header-text`}>Price</p>
-                  <Image src={FilterIcon} width={12} height={12} alt="filter" />
-                </TableSortLabel>
-              </TableHeaderCell>
-
-              <TableHeaderCell>
-                <TableSortLabel
-                  active={sortConfig.key === SortKey.TOTAL}
-                  direction={sortConfig.direction || SortDirection.ASC}
-                  onClick={() => handleSort(SortKey.TOTAL)}
-                  IconComponent={() => null}
-                  sx={sortLabelStyles}
-                >
-                  <p className={`${baseClassName}__header-text`}>Total</p>
-                  <Image src={FilterIcon} width={12} height={12} alt="filter" />
-                </TableSortLabel>
-              </TableHeaderCell>
-
-              <TableHeaderCell>
-                <TableSortLabel
-                  active={sortConfig.key === SortKey.PRICESOL}
-                  direction={sortConfig.direction || SortDirection.ASC}
-                  onClick={() => handleSort(SortKey.PRICESOL)}
-                  IconComponent={() => null}
-                  sx={sortLabelStyles}
-                >
-                  <p className={`${baseClassName}__header-text`}>Price SOL</p>
-                  <Image src={FilterIcon} width={12} height={12} alt="filter" />
-                </TableSortLabel>
-              </TableHeaderCell>
-
-              <TableHeaderCell>
-                <TableSortLabel
-                  active={sortConfig.key === SortKey.AMOUNTHYPE}
-                  direction={sortConfig.direction || SortDirection.ASC}
-                  onClick={() => handleSort(SortKey.AMOUNTHYPE)}
-                  IconComponent={() => null}
-                  sx={sortLabelStyles}
-                >
-                  <p className={`${baseClassName}__header-text`}>Amount HYPE</p>
-                  <Image src={FilterIcon} width={12} height={12} alt="filter" />
-                </TableSortLabel>
-              </TableHeaderCell>
-
-              <TableHeaderCell>Marker</TableHeaderCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {sortedData.map((item, index) => (
-              <TableRow key={index}>
-                <TableCell>{formatDate(item.date)}</TableCell>
-                <TableCell>
-                  <p
-                    className={`${baseClassName}__type-${item.type.toLowerCase()}`}
+    <>
+      <div className={baseClassName}>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableHeaderCell>
+                  <TableSortLabel
+                    active={sortConfig.key === SortKey.DATE}
+                    direction={sortConfig.direction || SortDirection.ASC}
+                    onClick={() => handleSort(SortKey.DATE)}
+                    IconComponent={() => null}
+                    sx={sortLabelStyles}
                   >
-                    {item.type}
-                  </p>
-                </TableCell>
-                <TableCell>
-                  <p>${formatScientificNumber(item.price)}</p>
-                </TableCell>
-                <TableCell>
-                  <div className={`${baseClassName}__total`}>
-                    <p>${item.total}</p>
-                    {getIconByRank(item.rank as Ranks)}
-                  </div>
-                </TableCell>
-                <TableCell>$ {formatScientificNumber(item.priceSol)}</TableCell>
-                <TableCell>{item.amountHype.toLocaleString("en-US")}</TableCell>
-                <TableCell>
-                  <div className={`${baseClassName}__marker`}>
-                    <p>{item.marker}</p>
-                    <CopyToClipboard
-                      imageSrc={CopyIcon}
-                      textToCopy={item.marker}
-                      altText="copy"
+                    <p className={`${baseClassName}__header-text`}>Date</p>
+                    <Image
+                      src={FilterIcon}
+                      width={12}
+                      height={12}
+                      alt="filter"
                     />
-                  </div>
-                </TableCell>
+                  </TableSortLabel>
+                </TableHeaderCell>
+
+                <TableHeaderCell>
+                  <TableSortLabel
+                    IconComponent={() => null}
+                    onClick={toggleTypeSort}
+                    sx={sortLabelStyles}
+                  >
+                    <p className={`${baseClassName}__header-text`}>Type</p>
+                    <Image
+                      src={FilterIcon}
+                      width={12}
+                      height={12}
+                      alt="filter"
+                    />
+                  </TableSortLabel>
+                </TableHeaderCell>
+
+                <TableHeaderCell>
+                  <TableSortLabel
+                    active={sortConfig.key === SortKey.PRICE}
+                    direction={sortConfig.direction || SortDirection.ASC}
+                    onClick={() => handleSort(SortKey.PRICE)}
+                    IconComponent={() => null}
+                    sx={sortLabelStyles}
+                  >
+                    <p className={`${baseClassName}__header-text`}>Price</p>
+                    <Image
+                      src={FilterIcon}
+                      width={12}
+                      height={12}
+                      alt="filter"
+                    />
+                  </TableSortLabel>
+                </TableHeaderCell>
+
+                <TableHeaderCell>
+                  <TableSortLabel
+                    active={sortConfig.key === SortKey.TOTAL}
+                    direction={sortConfig.direction || SortDirection.ASC}
+                    onClick={() => handleSort(SortKey.TOTAL)}
+                    IconComponent={() => null}
+                    sx={sortLabelStyles}
+                  >
+                    <p className={`${baseClassName}__header-text`}>Total</p>
+                    <Image
+                      src={FilterIcon}
+                      width={12}
+                      height={12}
+                      alt="filter"
+                    />
+                  </TableSortLabel>
+                </TableHeaderCell>
+
+                <TableHeaderCell>
+                  <TableSortLabel
+                    active={sortConfig.key === SortKey.PRICESOL}
+                    direction={sortConfig.direction || SortDirection.ASC}
+                    onClick={() => handleSort(SortKey.PRICESOL)}
+                    IconComponent={() => null}
+                    sx={sortLabelStyles}
+                  >
+                    <p className={`${baseClassName}__header-text`}>Price SOL</p>
+                    <Image
+                      src={FilterIcon}
+                      width={12}
+                      height={12}
+                      alt="filter"
+                    />
+                  </TableSortLabel>
+                </TableHeaderCell>
+
+                <TableHeaderCell>
+                  <TableSortLabel
+                    active={sortConfig.key === SortKey.AMOUNTHYPE}
+                    direction={sortConfig.direction || SortDirection.ASC}
+                    onClick={() => handleSort(SortKey.AMOUNTHYPE)}
+                    IconComponent={() => null}
+                    sx={sortLabelStyles}
+                  >
+                    <p className={`${baseClassName}__header-text`}>
+                      Amount HYPE
+                    </p>
+                    <Image
+                      src={FilterIcon}
+                      width={12}
+                      height={12}
+                      alt="filter"
+                    />
+                  </TableSortLabel>
+                </TableHeaderCell>
+
+                <TableHeaderCell>Marker</TableHeaderCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+            </TableHead>
+
+            <TableBody>
+              {sortedData.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell>{formatDate(item.date)}</TableCell>
+                  <TableCell>
+                    <p
+                      className={`${baseClassName}__type-${item.type.toLowerCase()}`}
+                    >
+                      {item.type}
+                    </p>
+                  </TableCell>
+                  <TableCell>
+                    <p>${formatScientificNumber(item.price)}</p>
+                  </TableCell>
+                  <TableCell>
+                    <div className={`${baseClassName}__total`}>
+                      <p>${item.total}</p>
+                      {getIconByRank(item.rank as Ranks)}
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    $ {formatScientificNumber(item.priceSol)}
+                  </TableCell>
+                  <TableCell>
+                    {item.amountHype.toLocaleString("en-US")}
+                  </TableCell>
+                  <TableCell>
+                    <div className={`${baseClassName}__marker`}>
+                      <p>{item.marker}</p>
+                      <CopyToClipboard
+                        imageSrc={CopyIcon}
+                        textToCopy={item.marker}
+                        altText="copy"
+                      />
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+      <div className={`${baseClassName}-mobile`}>
+        {sortedData.map((item) => (
+          <div className={`${baseClassName}-mobile__card`}>
+            <div className={`${baseClassName}-mobile__column`}>
+              <p className={`${baseClassName}-mobile__label`}>Date</p>
+              <div>{formatDate(item.date)}</div>
+            </div>
+            <div className={`${baseClassName}-mobile__column`}>
+              <p className={`${baseClassName}-mobile__label`}>Type</p>
+              <div>{item.type}</div>
+            </div>
+            <div className={`${baseClassName}-mobile__column`}>
+              <p className={`${baseClassName}-mobile__label`}>Price</p>
+              <div>$ {formatScientificNumber(item.priceSol)}</div>
+            </div>
+            <div className={`${baseClassName}-mobile__column`}>
+              <p className={`${baseClassName}-mobile__label`}>Total</p>
+              <div>
+                <div className={`${baseClassName}__total`}>
+                  <p>${item.total}</p>
+                  {getIconByRank(item.rank as Ranks)}
+                </div>
+              </div>
+            </div>
+            <div className={`${baseClassName}-mobile__column`}>
+              <p className={`${baseClassName}-mobile__label`}>Price ETH</p>
+              <div>$ {formatScientificNumber(item.priceSol)}</div>
+            </div>
+            <div className={`${baseClassName}-mobile__column`}>
+              <p className={`${baseClassName}-mobile__label`}>Amount HYPE</p>
+              <div>$ {formatScientificNumber(item.priceSol)}</div>
+            </div>
+            <div className={`${baseClassName}-mobile__column`}>
+              <p className={`${baseClassName}-mobile__label`}>Marker</p>
+              <div className={`${baseClassName}__marker`}>
+                <p>{item.marker}</p>
+                <CopyToClipboard
+                  imageSrc={CopyIcon}
+                  textToCopy={item.marker}
+                  altText="copy"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
