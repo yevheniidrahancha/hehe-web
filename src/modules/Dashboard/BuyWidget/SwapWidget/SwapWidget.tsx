@@ -1,101 +1,94 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+
 import SelectCoinCard from "./SelectCoinCard/SelectCoinCard";
-import "./styles.scss";
+import SelectTokenModal from "@/components/SelectCoinModal/SelectTokenModal";
+
 import EthereumIcon from "../../../../assets/ethereum.svg";
 import SolonaIcon from "../../../../assets/solana.svg";
 import RateIcon from "../../../../assets/rate.svg";
 import TimerIcon from "../../../../assets/timer.svg";
 import ChevronDownIcon from "../../../../assets/chevron-green.svg";
-import { useState } from "react";
-import Image from "next/image";
+
+import "./styles.scss";
 
 const baseClassName = "swap-widget";
 
-const mockСEthCoin = [
+const mockTokens = [
   {
-    value: "ETH",
-    label: "ETH",
-    icon: EthereumIcon,
+    name: "Ethereum",
+    symbol: "ETH",
+    address: "0x1",
+    icon: "/icons/ethereum.svg",
+    balance: "2.35",
   },
   {
-    value: "ETH",
-    label: "ETH",
-    icon: EthereumIcon,
+    name: "Tether USD",
+    symbol: "USDT",
+    address: "0x2",
+    icon: "/icons/usdt.svg",
+    balance: "530.12",
   },
   {
-    value: "ETH",
-    label: "ETH",
-    icon: EthereumIcon,
-  },
-];
-
-const mockСSolCoin = [
-  {
-    value: "SOL",
-    label: "SOL",
-    icon: SolonaIcon,
-  },
-  {
-    value: "SOL",
-    label: "SOL",
-    icon: SolonaIcon,
-  },
-  {
-    value: "SOL",
-    label: "SOL",
-    icon: SolonaIcon,
+    name: "USD Coin",
+    symbol: "USDC",
+    address: "0x3",
+    icon: "/icons/usdc.svg",
+    balance: "120.00",
   },
 ];
 
 const SwapWidget = () => {
-  const [selectSourceCurrency, setSelectSourceCurrency] = useState("");
-  const [selectTargetCurrency, setSelectTargetCurrency] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSelectSourceCurrency = (e) => {
-    setSelectSourceCurrency(e.target.value);
-  };
-
-  const handleSelectTargetCurrency = (e) => {
-    setSelectTargetCurrency(e.target.value);
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
   };
 
   return (
     <div className={baseClassName}>
       <SelectCoinCard
-        currencies={mockСEthCoin}
-        placeholderIcon={EthereumIcon}
-        placeholderLabel="ETH"
-        onSelect={handleSelectSourceCurrency}
-        valueCurrency={selectSourceCurrency}
+        tokenSymbol="ETH"
+        iconSrc={EthereumIcon}
+        onClick={handleOpenModal}
+        value="0"
+        usdValue="0.00"
       />
       <SelectCoinCard
-        currencies={mockСSolCoin}
-        placeholderIcon={SolonaIcon}
-        placeholderLabel="SOL"
-        valueCurrency={selectTargetCurrency}
-        onSelect={handleSelectTargetCurrency}
+        tokenSymbol="SOL"
+        iconSrc={SolonaIcon}
+        onClick={handleOpenModal}
+        value="0"
+        usdValue="0.00"
       />
+
       <div className={`${baseClassName}__exchange-rate-wrapper`}>
         <div className={`${baseClassName}__exchange-rate`}>
           <p className={`${baseClassName}__rate`}>1 ETH ≈ 1487.98 SOL</p>
           <Image src={RateIcon} alt="Rate" width={16} height={16} />
         </div>
-        <div>
-          <div className={`${baseClassName}__info`}>
-            <div className={`${baseClassName}__more-wrapper`}>
-              <p className={`${baseClassName}__more`}>More</p>
-              <Image
-                style={{ cursor: "pointer" }}
-                src={ChevronDownIcon}
-                width={16}
-                height={16}
-                alt="Chevron Down"
-              />
-            </div>
-
-            <Image src={TimerIcon} width={16} height={16} alt="timer" />
+        <div className={`${baseClassName}__info`}>
+          <div className={`${baseClassName}__more-wrapper`}>
+            <p className={`${baseClassName}__more`}>More</p>
+            <Image
+              style={{ cursor: "pointer" }}
+              src={ChevronDownIcon}
+              width={16}
+              height={16}
+              alt="Chevron Down"
+            />
           </div>
+          <Image src={TimerIcon} width={16} height={16} alt="timer" />
         </div>
       </div>
+
+      <SelectTokenModal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        tokens={mockTokens}
+      />
     </div>
   );
 };
