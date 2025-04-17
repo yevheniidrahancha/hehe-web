@@ -11,6 +11,7 @@
     &::after {
       content: " ";
       position: absolute;
+      display: block;
       right: -1px;
       transform: translateY(-50%);
       top: 50%;
@@ -25,5 +26,27 @@
     display: flex;
     gap: 25px;
     overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .levels-block {
+    flex-direction: column;
+    align-items: unset;
+    margin-bottom: 24px;
+
+    &__balance-card-wrapper {
+      padding-right: 0;
+      width: 100%;
+      margin-bottom: 16px;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &__level-list {
+      padding-left: 0;
+    }
   }
 }

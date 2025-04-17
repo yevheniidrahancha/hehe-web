@@ -4,3 +4,11 @@
     padding-bottom: 40px;
   }
 }
+
+@media (max-width: 768px) {
+  .dashbord {
+    &__content {
+      flex-direction: column;
+    }
+  }
+}

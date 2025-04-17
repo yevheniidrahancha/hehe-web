@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import LogoSvg from "../../assets/logo.svg";
+import LogoPng from "../../assets/logo.png";
+import DashboardNavSvg from "../../assets/dashboard-nav-link.svg";
+
 import Link from "next/link";
 import clsx from "clsx";
 
@@ -10,10 +12,7 @@ import { usePathname } from "next/navigation";
 
 const baseClassName = "header";
 
-const navLinks = [
-  { name: "Board", path: "/" },
-  { name: "Team", path: "/team" },
-];
+const navLinks = [{ name: "Board", icon: DashboardNavSvg, path: "/" }];
 
 const Header = () => {
   const pathname = usePathname();
@@ -23,12 +22,11 @@ const Header = () => {
       <div className={`${baseClassName}__logo`}>
         <Image
           className={`${baseClassName}__logo-img`}
-          src={LogoSvg}
+          src={LogoPng}
           width={40}
           height={48}
           alt="logo"
         />
-        <p className={`${baseClassName}__logo-name`}>HEHE</p>
         <div className={`${baseClassName}__nav-links`}>
           {navLinks.map((item) => (
             <Link
@@ -37,7 +35,12 @@ const Header = () => {
               })}
               href={item.path}
             >
-              {item.name}
+              <div className={`${baseClassName}__nav-link-content`}>
+                <Image src={item.icon} alt="nav icon" />
+                <p className={`${baseClassName}__nav-link-content-text`}>
+                  {item.name}
+                </p>
+              </div>
             </Link>
           ))}
         </div>

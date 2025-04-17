@@ -6,7 +6,7 @@ import "./styles.scss";
 import BuyLevelWidget from "./BuyLevelWidget/BuyLevelWidget";
 import SwapWidget from "./SwapWidget/SwapWidget";
 import Button from "@/components/Button/Button";
-import { BuyWidgetTabs } from "@/types/Types";
+import { BuyWidgetTabs } from "../Dashbord";
 
 const baseClassName = "buy-widget";
 
