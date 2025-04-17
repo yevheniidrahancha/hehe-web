@@ -2,3 +2,10 @@
   display: flex;
   margin-bottom: 44px;
 }
+
+@media (max-width: 768px) {
+  .refferal-info {
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+}

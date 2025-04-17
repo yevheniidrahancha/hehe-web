@@ -1,6 +1,7 @@
-import { BuyWidgetTabs } from "@/types/Types";
 import LevelDetailedInfo from "../LevelDetailedInfo/LevelDetailedInfo";
+import { BuyWidgetTabs } from "../Dashbord";
 import Chart from "./Chart/Chart";
+import "./styles.scss";
 
 const baseClassName = "level-chart";
 

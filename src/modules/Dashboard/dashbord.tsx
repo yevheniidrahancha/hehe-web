@@ -8,13 +8,17 @@ import LevelsBlock from "./LevelsBlock/LevelsBlock";
 import RefferalInfo from "./ReferralInfo/RefferalInfo";
 import TablesBlock from "./TablesBlock/TablesBlock";
 import "./styles.scss";
-import { BuyWidgetTabs } from "@/types/Types";
 const baseClassName = "dashbord";
 
+export enum BuyWidgetTabs {
+  BUYLEVELS = "BUYLEVELS",
+  SWAP = "SWAP",
+}
+
 const Dashboard = () => {
-  const [selectedTab, setSelectedTab] = useState<
-    BuyWidgetTabs.BUYLEVELS | BuyWidgetTabs.SWAP
-  >(BuyWidgetTabs.BUYLEVELS);
+  const [selectedTab, setSelectedTab] = useState<BuyWidgetTabs>(
+    BuyWidgetTabs.BUYLEVELS
+  );
   return (
     <div>
       <RefferalInfo />

@@ -23,7 +23,11 @@ const ReferralLink = () => {
   return (
     <div className={baseClassName}>
       <div className={`${baseClassName}__img-wrapper`}>
-        <Image src={SmileIcon} alt="smile icon" width={48} height={48} />
+        <Image
+          src={SmileIcon}
+          alt="smile icon"
+          className={`${baseClassName}__img`}
+        />
       </div>
       <div className={`${baseClassName}__user-name-wrapper`}>
         <p className={`${baseClassName}__user-name`}> ermalength</p>

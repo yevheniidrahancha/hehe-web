@@ -7,3 +7,9 @@
   max-width: 406px;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .statistics {
+    max-width: unset;
+  }
+}
