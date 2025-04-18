@@ -36,7 +36,13 @@ const Table = ({ headers, children }: TableProps) => {
   return (
     <TableContainer>
       <MUITable>
-        <TableHead>
+        <TableHead
+          sx={{
+            "@media (max-width:768px)": {
+              display: "none",
+            },
+          }}
+        >
           <TableRow>
             {headers.map((item) => (
               <StyledTableCell key={item}>{item}</StyledTableCell>

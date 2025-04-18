@@ -12,6 +12,11 @@ const StyledTableCell = styled(MUITableCell)(() => ({
     borderBottom: "1px solid #35394B",
     borderRight: "1px solid #35394B",
     padding: "8px 12px",
+    "@media (max-width: 768px)": {
+      borderBottom: "none",
+      borderRight: "none",
+      backgroundColor: "#2f3344",
+    },
 
     "&:last-child": {
       borderRight: "none",

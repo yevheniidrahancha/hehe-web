@@ -63,33 +63,66 @@ const HypactivityTable = () => {
       >
         {mockedData.map(
           ({ date, id, program, level, transaction, event }, index) => (
-            <TableRow key={index}>
-              <TableCell>
-                <p className={`${baseClassName}__text`}>
-                  {formatDateWithDDMMYYTime(date)}
-                </p>
-              </TableCell>
-              <TableCell>
-                <p className={`${baseClassName}__text-id`}>{id}</p>
-              </TableCell>
-              <TableCell>
-                <p className={`${baseClassName}__text`}>{program}</p>
-              </TableCell>
-              <TableCell>
-                <p className={`${baseClassName}__text`}>{level}</p>
-              </TableCell>
+            <TableRow
+              sx={{
+                "@media (max-width:768px)": {
+                  display: "flex",
+                  flexDirection: "column",
+                  borderBottom: "solid 1px #3E4257",
+                },
+              }}
+              key={index}
+            >
               <TableCell>
                 <div className={`${baseClassName}__cell-content`}>
-                  <LinkRedirect url={transaction} />
-                  <CopyToClipboard
-                    textToCopy={transaction}
-                    altText="Copy"
-                    imageSrc={CopyIcon}
-                  />
+                  <p className={`${baseClassName}__cell-mobile-title`}>Date</p>
+                  <p className={`${baseClassName}__text`}>
+                    {formatDateWithDDMMYYTime(date)}
+                  </p>
                 </div>
               </TableCell>
               <TableCell>
-                <p className={`${baseClassName}__text`}>{event}</p>
+                <div className={`${baseClassName}__cell-content`}>
+                  <p className={`${baseClassName}__cell-mobile-title`}>ID</p>
+                  <p className={`${baseClassName}__text-id`}>{id}</p>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className={`${baseClassName}__cell-content`}>
+                  <p className={`${baseClassName}__cell-mobile-title`}>
+                    Program
+                  </p>
+                  <p className={`${baseClassName}__text`}>{program}</p>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className={`${baseClassName}__cell-content`}>
+                  <p className={`${baseClassName}__cell-mobile-title`}>Level</p>
+                  <p className={`${baseClassName}__text`}>{level}</p>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className={`${baseClassName}__cell-content`}>
+                  <p className={`${baseClassName}__cell-mobile-title`}>
+                    Transaction
+                  </p>
+                  <div className={`${baseClassName}__cell-mobile`}>
+                    <LinkRedirect url={transaction} />
+                    <CopyToClipboard
+                      textToCopy={transaction}
+                      altText="Copy"
+                      imageSrc={CopyIcon}
+                    />
+                  </div>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className={`${baseClassName}__cell-content`}>
+                  <p className={`${baseClassName}__cell-mobile-title`}>
+                    Events
+                  </p>
+                  <p className={`${baseClassName}__text`}>{event}</p>
+                </div>
               </TableCell>
             </TableRow>
           )

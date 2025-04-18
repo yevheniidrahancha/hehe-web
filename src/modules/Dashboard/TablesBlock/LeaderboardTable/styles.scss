@@ -14,3 +14,22 @@
     color: #e68c3c;
   }
 }
+
+@media (max-width: 768px) {
+  .leaderboard-table {
+    &__cell-content {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &__cell-mobile {
+      display: flex;
+    }
+
+    &__cell-mobile-title {
+      display: block;
+      margin-right: 20px;
+    }
+  }
+}
