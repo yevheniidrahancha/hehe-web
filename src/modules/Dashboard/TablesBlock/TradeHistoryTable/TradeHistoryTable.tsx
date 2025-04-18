@@ -23,6 +23,7 @@ import CopyIcon from "../../../../assets/copy-green.svg";
 import CopyToClipboard from "@/components/CopyToClipboard/CopyToClipboard";
 import "./styles.scss";
 import { formatScientificNumber } from "@/utils/formatScientificNumber";
+import TradeHistoryTableMobile from "./TradeHistoryTableMobile";
 
 const baseClassName = "trade-history";
 
@@ -288,52 +289,7 @@ const TradeHistoryTable = () => {
           </Table>
         </TableContainer>
       </div>
-      <div className={`${baseClassName}-mobile`}>
-        {sortedData.map((item) => (
-          <div className={`${baseClassName}-mobile__card`}>
-            <div className={`${baseClassName}-mobile__column`}>
-              <p className={`${baseClassName}-mobile__label`}>Date</p>
-              <div>{formatDate(item.date)}</div>
-            </div>
-            <div className={`${baseClassName}-mobile__column`}>
-              <p className={`${baseClassName}-mobile__label`}>Type</p>
-              <div>{item.type}</div>
-            </div>
-            <div className={`${baseClassName}-mobile__column`}>
-              <p className={`${baseClassName}-mobile__label`}>Price</p>
-              <div>$ {formatScientificNumber(item.priceSol)}</div>
-            </div>
-            <div className={`${baseClassName}-mobile__column`}>
-              <p className={`${baseClassName}-mobile__label`}>Total</p>
-              <div>
-                <div className={`${baseClassName}__total`}>
-                  <p>${item.total}</p>
-                  {getIconByRank(item.rank as Ranks)}
-                </div>
-              </div>
-            </div>
-            <div className={`${baseClassName}-mobile__column`}>
-              <p className={`${baseClassName}-mobile__label`}>Price ETH</p>
-              <div>$ {formatScientificNumber(item.priceSol)}</div>
-            </div>
-            <div className={`${baseClassName}-mobile__column`}>
-              <p className={`${baseClassName}-mobile__label`}>Amount HYPE</p>
-              <div>$ {formatScientificNumber(item.priceSol)}</div>
-            </div>
-            <div className={`${baseClassName}-mobile__column`}>
-              <p className={`${baseClassName}-mobile__label`}>Marker</p>
-              <div className={`${baseClassName}__marker`}>
-                <p>{item.marker}</p>
-                <CopyToClipboard
-                  imageSrc={CopyIcon}
-                  textToCopy={item.marker}
-                  altText="copy"
-                />
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <TradeHistoryTableMobile data={sortedData} />
     </>
   );
 };

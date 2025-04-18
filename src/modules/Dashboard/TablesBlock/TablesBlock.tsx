@@ -10,7 +10,6 @@ import HypactivityTable from "./HypactivityTable/HypactivityTable";
 
 import "./styles.scss";
 import clsx from "clsx";
-import MobileTable from "@/components/MobileTable/MobileTable";
 
 const baseClassName = "tables-block";
 
