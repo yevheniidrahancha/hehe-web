@@ -21,10 +21,29 @@
     margin-right: 12px;
   }
 
+  &__button-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button-text {
+    color: #8d91a4;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0.32px;
+  }
+
+  &__button-wrapper {
+    cursor: pointer;
+  }
+
   &__nav-links {
     display: flex;
     align-items: center;
     margin-left: 40px;
+    margin-right: 32px;
   }
 
   &__link-item {

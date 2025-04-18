@@ -21,7 +21,7 @@ interface ModalProps {
 
 const modalPaperSx: SxProps<Theme> = {
   width: "618px",
-  padding: "0 24px",
+  padding: "0",
   backgroundColor: "#2F3344",
   borderRadius: "16px",
   boxSizing: "border-box",
@@ -35,7 +35,7 @@ const modalTitleSx: SxProps<Theme> = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: "16px 0",
+  padding: "16px 24px",
   color: "#FFF",
   fontSize: "20px",
   lineHeight: "28px",
