@@ -8,6 +8,10 @@
     margin-right: 10px;
   }
 
+  &__cell-mobile {
+    display: flex;
+  }
+
   &__cell-mobile-title {
     display: none;
     color: #797a91;

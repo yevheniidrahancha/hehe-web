@@ -4,6 +4,19 @@
     align-items: center;
   }
 
+  &__cell-mobile {
+    display: flex;
+  }
+
+  &__cell-mobile-title {
+    display: none;
+    color: #797a91;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
   &__rank-gold {
     color: #bdd269;
   }
