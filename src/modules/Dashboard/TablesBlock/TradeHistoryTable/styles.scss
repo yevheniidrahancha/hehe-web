@@ -26,17 +26,34 @@
   }
 }
 
+.trade-history-table-mobile {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .trade-history {
     display: none;
   }
-  .trade-history-mobile {
+
+  .trade-history-table-mobile {
+    display: block;
     &__card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       padding: 16px 8px;
       border-bottom: 1px solid #3e4257;
 
       &:last-child {
         border-bottom: none;
+      }
+    }
+
+    &__marker {
+      display: flex;
+
+      .copy-to-clipboard {
+        width: auto;
       }
     }
 
@@ -52,6 +69,32 @@
     &__column {
       display: flex;
       justify-content: space-between;
+    }
+
+    &__content {
+      color: #fff;
+      font-family: var(--font-sf-pro-regular);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    &__content-marker {
+      color: #6ab67c;
+    }
+
+    &__type-sell {
+      color: #ff8475;
+      text-transform: uppercase;
+    }
+    &__type-buy {
+      color: #6ab67c;
+      text-transform: uppercase;
+    }
+
+    &__total {
+      display: flex;
     }
   }
 }

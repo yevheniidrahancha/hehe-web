@@ -7,6 +7,10 @@
     background-color: #2f3344;
   }
 
+  &__mobile-content {
+    display: none;
+  }
+
   &__mobile-tabs {
     display: flex;
     gap: 8px;
@@ -37,6 +41,10 @@
   .tables-block {
     background-color: #2f3344;
     padding: 10px 8px;
+
+    &__mobile-content {
+      display: block;
+    }
 
     &__tabs-wrapper {
       display: none;
