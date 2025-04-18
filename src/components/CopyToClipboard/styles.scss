@@ -1,12 +1,11 @@
 .copy-to-clipboard {
   display: flex;
-  justify-content: start;
+  justify-content: end;
   align-items: center;
   width: 40px;
   cursor: pointer;
   overflow: hidden;
   position: relative;
-  margin-left: 10px;
 }
 
 .copied-message {

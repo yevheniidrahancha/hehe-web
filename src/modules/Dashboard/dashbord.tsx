@@ -1,19 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import BuyWidget from "./BuyWidget/BuyWidget";
+
 import LevelChartWidget from "./LevelChartSwitcher/LevelChartSwitcher";
 
 import LevelsBlock from "./LevelsBlock/LevelsBlock";
 import RefferalInfo from "./ReferralInfo/RefferalInfo";
 import TablesBlock from "./TablesBlock/TablesBlock";
 import "./styles.scss";
+import BuyWidget from "./BuyWidget/BuyWidget";
+import { BuyWidgetTabs } from "@/types/Types";
 const baseClassName = "dashbord";
-
-export enum BuyWidgetTabs {
-  BUYLEVELS = "BUYLEVELS",
-  SWAP = "SWAP",
-}
 
 const Dashboard = () => {
   const [selectedTab, setSelectedTab] = useState<BuyWidgetTabs>(

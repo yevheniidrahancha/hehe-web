@@ -2,11 +2,9 @@
 
 import Image from "next/image";
 import WaletIcon from "../../../../../assets/wallet-coin-card.svg";
-
-import CustomSelect from "@/components/CustomSelect/CustomSelect";
+import ChevronIcon from "../../../../../assets/chevron-down.svg";
 
 import "./styles.scss";
-import { SelectChangeEvent } from "@mui/material";
 
 const baseClassName = "select-coin-card";
 
@@ -17,19 +15,19 @@ export interface CurrencyOption {
 }
 
 interface SelectCoinCardProps {
-  currencies: CurrencyOption[];
-  placeholderIcon: string;
-  placeholderLabel: string;
-  valueCurrency: string;
-  onSelect: (e: SelectChangeEvent) => void;
+  tokenSymbol: string;
+  iconSrc: string;
+  onClick: () => void;
+  value: string;
+  usdValue: string;
 }
 
 const SelectCoinCard = ({
-  currencies,
-  placeholderIcon,
-  placeholderLabel,
-  onSelect,
-  valueCurrency,
+  tokenSymbol,
+  iconSrc,
+  onClick,
+  value,
+  usdValue,
 }: SelectCoinCardProps) => {
   return (
     <div className={baseClassName}>
@@ -39,28 +37,39 @@ const SelectCoinCard = ({
           <Image
             className={`${baseClassName}__walet-img`}
             src={WaletIcon}
-            alt="Walet"
+            alt="Wallet"
             width={16}
             height={16}
           />
-          <p className={`${baseClassName}__text`}>0</p>
+          <p className={`${baseClassName}__text`}>{value}</p>
           <span className={`${baseClassName}__note`}>MAX</span>
           <span className={`${baseClassName}__note`}>50%</span>
         </div>
       </div>
       <div className={`${baseClassName}__coin-wrapper`}>
         <div className={`${baseClassName}__coin-select`}>
-          <CustomSelect
-            options={currencies}
-            placeholderIcon={placeholderIcon}
-            placeholder={placeholderLabel}
-            onChange={onSelect}
-            value={valueCurrency}
-          />
+          <button onClick={onClick}>
+            <div className={`${baseClassName}__token-button-content`}>
+              <div className={`${baseClassName}__token-button`}>
+                <Image
+                  src={iconSrc}
+                  alt="Token"
+                  width={24}
+                  height={24}
+                  style={{ marginRight: "8px" }}
+                />
+                <p className={`${baseClassName}__token-button-text`}>
+                  {tokenSymbol}
+                </p>
+              </div>
+
+              <Image src={ChevronIcon} alt="Select" width={16} height={16} />
+            </div>
+          </button>
         </div>
         <div className={`${baseClassName}__coin-value-wrapper`}>
-          <p className={`${baseClassName}__coin-value`}>0</p>
-          <p className={`${baseClassName}__currency`}>~$0.00</p>
+          <p className={`${baseClassName}__coin-value`}>{value}</p>
+          <p className={`${baseClassName}__currency`}>~${usdValue}</p>
         </div>
       </div>
     </div>

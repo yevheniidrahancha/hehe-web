@@ -1,0 +1,60 @@
+.token-balance-card {
+  width: 100%;
+  display: flex;
+  padding: 8px 16px 8px 8px;
+  justify-content: space-between;
+  border-radius: 8px;
+  background: #3c4055;
+
+  &__token-name-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__token-name {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__token-title {
+    color: #fff;
+    margin-bottom: 2px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  &__token-subtitle {
+    color: #797e99;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  &__token-value-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__token-value {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: right;
+  }
+
+  &__token-link-wrapper {
+    display: flex;
+    color: #797e99;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    justify-content: end;
+  }
+}
