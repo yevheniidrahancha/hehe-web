@@ -47,36 +47,59 @@ const LeaderboardTable = () => {
     <div className={baseClassName}>
       <Table headers={["Rank", "Name", "Invited By", "Rewards"]}>
         {leaderboardSoetedData.map(({ name, invitedBy, rewards }, index) => (
-          <TableRow key={index}>
+          <TableRow
+            sx={{
+              "@media (max-width:768px)": {
+                display: "flex",
+                flexDirection: "column",
+                borderBottom: "solid 1px #3E4257",
+              },
+            }}
+            key={index}
+          >
             <TableCell>
-              <p
-                className={clsx({
-                  [`${baseClassName}__rank-gold`]: index === 0,
-                  [`${baseClassName}__rank-silver`]: index === 1,
-                  [`${baseClassName}__rank-bronze`]: index === 2,
-                })}
-              >
-                {index + 1}
-              </p>
-            </TableCell>
-            <TableCell>
-              <p className={`${baseClassName}__text`}>{name}</p>
-            </TableCell>
-            <TableCell>
-              <LinkRedirect url={invitedBy} />
+              <div className={`${baseClassName}__cell-content`}>
+                <p className={`${baseClassName}__cell-mobile-title`}>Rank</p>
+                <p
+                  className={clsx({
+                    [`${baseClassName}__rank-gold`]: index === 0,
+                    [`${baseClassName}__rank-silver`]: index === 1,
+                    [`${baseClassName}__rank-bronze`]: index === 2,
+                  })}
+                >
+                  {index + 1}
+                </p>
+              </div>
             </TableCell>
             <TableCell>
               <div className={`${baseClassName}__cell-content`}>
-                <Image
-                  src={CoinIcon}
-                  width={20}
-                  height={20}
-                  alt="coin"
-                  style={{ marginRight: 10 }}
-                />
-                <p className={`${baseClassName}__text`}>
-                  ${rewards.toLocaleString("en-US")}{" "}
+                <p className={`${baseClassName}__cell-mobile-title`}>Name</p>
+                <p className={`${baseClassName}__text`}>{name}</p>
+              </div>
+            </TableCell>
+            <TableCell>
+              <div className={`${baseClassName}__cell-content`}>
+                <p className={`${baseClassName}__cell-mobile-title`}>
+                  Invited By
                 </p>
+                <LinkRedirect url={invitedBy} />
+              </div>
+            </TableCell>
+            <TableCell>
+              <div className={`${baseClassName}__cell-content`}>
+                <p className={`${baseClassName}__cell-mobile-title`}>Rewards</p>
+                <div className={`${baseClassName}__cell-mobile`}>
+                  <Image
+                    src={CoinIcon}
+                    width={20}
+                    height={20}
+                    alt="coin"
+                    style={{ marginRight: 10 }}
+                  />
+                  <p className={`${baseClassName}__text`}>
+                    ${rewards.toLocaleString("en-US")}{" "}
+                  </p>
+                </div>
               </div>
             </TableCell>
           </TableRow>
