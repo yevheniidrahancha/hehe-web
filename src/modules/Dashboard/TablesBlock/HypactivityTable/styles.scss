@@ -8,7 +8,39 @@
     margin-right: 10px;
   }
 
+  &__cell-mobile {
+    display: flex;
+  }
+
+  &__cell-mobile-title {
+    display: none;
+    color: #797a91;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
   &__text-id {
     color: #7f84eb;
+  }
+}
+
+@media (max-width: 768px) {
+  .hypactivity-table {
+    &__cell-content {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &__cell-mobile {
+      display: flex;
+    }
+
+    &__cell-mobile-title {
+      display: block;
+      margin-right: 20px;
+    }
   }
 }

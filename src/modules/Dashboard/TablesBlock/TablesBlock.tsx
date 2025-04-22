@@ -40,8 +40,9 @@ const TablesBlock = () => {
     <div className={baseClassName}>
       <div className={`${baseClassName}__mobile-content`}>
         <div className={`${baseClassName}__mobile-tabs`}>
-          {tabs.map((item) => (
+          {tabs.map((item, index) => (
             <button
+              key={index}
               className={clsx(`${baseClassName}__mobile-tab`, {
                 [`${baseClassName}__mobile-tab--active`]:
                   item.value === selectedTabValue,

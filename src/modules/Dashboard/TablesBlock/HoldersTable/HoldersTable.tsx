@@ -47,28 +47,47 @@ const HoldersTable = () => {
     <div className={baseClassName}>
       <Table headers={["Address", "ID", "Amount", "Value"]}>
         {mockedData.map(({ address, supply, amount, value }, index) => (
-          <TableRow key={index}>
+          <TableRow
+            sx={{
+              "@media (max-width:768px)": {
+                display: "flex",
+                flexDirection: "column",
+                borderBottom: "solid 1px #3E4257",
+              },
+            }}
+            key={index}
+          >
             <TableCell>
               <div className={`${baseClassName}__cell-content`}>
-                <p className={`${baseClassName}__text`}>{address}</p>
-                <CopyToClipboard
-                  altText="copy"
-                  textToCopy={address}
-                  imageSrc={CopyIcon}
-                />
+                <p className={`${baseClassName}__cell-mobile-title`}>Address</p>
+                <div className={`${baseClassName}__cell-mobile`}>
+                  <p className={`${baseClassName}__text`}>{address}</p>
+                  <CopyToClipboard
+                    altText="copy"
+                    textToCopy={address}
+                    imageSrc={CopyIcon}
+                  />
+                </div>
               </div>
             </TableCell>
             <TableCell>
               <div className={`${baseClassName}__cell-content`}>
+                <p className={`${baseClassName}__cell-mobile-title`}>Supply</p>
                 <p className={`${baseClassName}__text`}>{supply}</p>
                 <LinearProgress value={80} />
               </div>
             </TableCell>
             <TableCell>
-              <p>{amount}</p>
+              <div className={`${baseClassName}__cell-content`}>
+                <p className={`${baseClassName}__cell-mobile-title`}>Amount</p>
+                <p>{amount}</p>
+              </div>
             </TableCell>
             <TableCell>
-              <p>${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</p>
+              <div className={`${baseClassName}__cell-content`}>
+                <p className={`${baseClassName}__cell-mobile-title`}>Value</p>
+                <p>${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</p>
+              </div>
             </TableCell>
           </TableRow>
         ))}
