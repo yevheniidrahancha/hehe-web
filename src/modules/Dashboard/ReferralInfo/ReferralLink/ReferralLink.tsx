@@ -11,7 +11,7 @@ const baseClassName = "referral-link";
 const link = "https://hehe.com/ref=$9295xj-3928x03pox039jfh930_039x893";
 
 const ReferralLink = () => {
-  const [copied, setCopied] = useState(false);
+  const [, setCopied] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(link).then(() => {

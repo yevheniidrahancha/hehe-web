@@ -57,6 +57,7 @@ const mockPopularsTokens = [
 
 interface Token {
   name: string;
+  symbol: string;
 }
 
 interface SelectTokenModalProps {
@@ -65,11 +66,11 @@ interface SelectTokenModalProps {
   tokens: Token[];
 }
 
-const SelectTokenModal = ({ open, onClose, tokens }: SelectTokenModalProps) => {
-  const [search, setSearch] = useState("");
-  const filteredTokens = tokens.filter((token) =>
-    `${token.name} ${token.symbol}`.toLowerCase().includes(search.toLowerCase())
-  );
+const SelectTokenModal = ({ open, onClose }: SelectTokenModalProps) => {
+  const [, setSearch] = useState("");
+  // const filteredTokens = tokens.filter((token) =>
+  //   `${token.name} ${token.symbol}`.toLowerCase().includes(search.toLowerCase())
+  // );
 
   return (
     <Modal title="Select a token" open={open} onClose={onClose}>

@@ -15,7 +15,7 @@ const TradeHistoryTableMobile = ({ data }: { data: TradeRow[] }) => {
   return (
     <div className={baseClassName}>
       {data.map((item) => (
-        <div className={`${baseClassName}__card`}>
+        <div key={item.rank} className={`${baseClassName}__card`}>
           <div className={`${baseClassName}__column`}>
             <p className={`${baseClassName}__label`}>Date</p>
             <p className={`${baseClassName}__content`}>

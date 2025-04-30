@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
 import EthereumIcon from "../../../../../assets/ethereum.svg";
 
@@ -46,11 +46,15 @@ const Filters = () => {
   const [selectLevel, setSelectLevel] = useState("");
   const [selectСurrency, setSelectСurrency] = useState("");
 
-  const handleSelectLevel = (e) => {
+  const handleSelectLevel = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setSelectLevel(e.target.value);
   };
 
-  const handleSelectCurrency = (e) => {
+  const handleSelectCurrency = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setSelectСurrency(e.target.value);
   };
   return (
