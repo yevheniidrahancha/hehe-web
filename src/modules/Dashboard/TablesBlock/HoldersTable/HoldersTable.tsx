@@ -1,52 +1,55 @@
 import LinearProgress from "@/components/LinearProgress/LinearProgress";
 import Table from "@/components/Table/Table";
 import TableCell from "@/components/TableCell/TableCell";
-import { TableRow } from "@mui/material";
+import { Box, CircularProgress, TableRow } from "@mui/material";
 import CopyToClipboard from "@/components/CopyToClipboard/CopyToClipboard";
 import CopyIcon from "../../../../assets/copy-green.svg";
 import "./styles.scss";
+import { useEffect, useState } from "react";
+import { Holder, fetchHolders } from "@/api/api";
+import { shortAddress } from "@/utils/shortAddress";
 
 const baseClassName = "holders-table";
 
-interface HolderMockedDataInterface {
-  address: string;
-  supply: number;
-  amount: string;
-  value: number;
-}
-
-const mockedData: HolderMockedDataInterface[] = [
-  {
-    address: "A77H...QWE2",
-    supply: 5.33,
-    amount: "53.32M",
-    value: 350893,
-  },
-  {
-    address: "A77H...QWE2",
-    supply: 5.33,
-    amount: "53.32M",
-    value: 350893,
-  },
-  {
-    address: "A77H...QWE2",
-    supply: 5.33,
-    amount: "53.32M",
-    value: 350893,
-  },
-  {
-    address: "A77H...QWE2",
-    supply: 5.33,
-    amount: "53.32M",
-    value: 350893,
-  },
-];
+const formatMillions = (value: number): string => {
+  return (value / 1_000_000).toFixed(2) + "M";
+};
 
 const HoldersTable = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [holders, setHolders] = useState<Holder[]>([]);
+
+  useEffect(() => {
+    const getHolders = async () => {
+      try {
+        const response = await fetchHolders();
+        setHolders(response.result.items);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getHolders();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className={baseClassName}>
+        <Box
+          sx={{ display: "flex", justifyContent: "center", padding: "20px" }}
+        >
+          <CircularProgress />
+        </Box>
+      </div>
+    );
+  }
+
   return (
     <div className={baseClassName}>
-      <Table headers={["Address", "ID", "Amount", "Value"]}>
-        {mockedData.map(({ address, supply, amount, value }, index) => (
+      <Table headers={["Address", "Supply", "Amount", "Value"]}>
+        {holders?.map(({ address, supply, amount, amount_usd }) => (
           <TableRow
             sx={{
               "@media (max-width:768px)": {
@@ -55,13 +58,15 @@ const HoldersTable = () => {
                 borderBottom: "solid 1px #3E4257",
               },
             }}
-            key={index}
+            key={address}
           >
             <TableCell>
               <div className={`${baseClassName}__cell-content`}>
                 <p className={`${baseClassName}__cell-mobile-title`}>Address</p>
                 <div className={`${baseClassName}__cell-mobile`}>
-                  <p className={`${baseClassName}__text`}>{address}</p>
+                  <p className={`${baseClassName}__text`}>
+                    {shortAddress(address)}
+                  </p>
                   <CopyToClipboard
                     altText="copy"
                     textToCopy={address}
@@ -73,20 +78,22 @@ const HoldersTable = () => {
             <TableCell>
               <div className={`${baseClassName}__cell-content`}>
                 <p className={`${baseClassName}__cell-mobile-title`}>Supply</p>
-                <p className={`${baseClassName}__text`}>{supply}</p>
+                <p className={`${baseClassName}__text`}>{supply}%</p>
                 <LinearProgress value={80} />
               </div>
             </TableCell>
             <TableCell>
               <div className={`${baseClassName}__cell-content`}>
                 <p className={`${baseClassName}__cell-mobile-title`}>Amount</p>
-                <p>{amount}</p>
+                <p>{formatMillions(amount)}</p>
               </div>
             </TableCell>
             <TableCell>
               <div className={`${baseClassName}__cell-content`}>
                 <p className={`${baseClassName}__cell-mobile-title`}>Value</p>
-                <p>${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</p>
+                <p>
+                  ${amount_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+                </p>
               </div>
             </TableCell>
           </TableRow>

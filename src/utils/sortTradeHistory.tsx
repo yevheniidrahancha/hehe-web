@@ -1,11 +1,12 @@
-import { SortDirection, SortKey, TradeRow } from "@/types/Types";
+import { ExchangeHistory } from "@/api/api";
+import { SortDirection, SortKey } from "@/types/Types";
 
 export const sortTradeHistory = (
-  data: TradeRow[],
+  data: ExchangeHistory[],
   sortConfig: { key: SortKey; direction: SortDirection },
   typeSort: string
-): TradeRow[] => {
-  const sortFunction = (a: TradeRow, b: TradeRow) => {
+): ExchangeHistory[] => {
+  const sortFunction = (a: ExchangeHistory, b: ExchangeHistory) => {
     if (typeSort) {
       if (a.type === typeSort && b.type !== typeSort) return -1;
       if (a.type !== typeSort && b.type === typeSort) return 1;

@@ -1,52 +1,56 @@
 import Table from "@/components/Table/Table";
 import TableCell from "@/components/TableCell/TableCell";
-import { TableRow } from "@mui/material";
+import { Box, CircularProgress, TableRow } from "@mui/material";
 import CoinIcon from "../../../../assets/coin.svg";
 import Image from "next/image";
 import LinkRedirect from "@/components/LinkRedirect/LinkRedirect";
 import "./styles.scss";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
+import { Leaderboard, fetchLeaderboard } from "@/api/api";
+import { shortAddress } from "@/utils/shortAddress";
 
 const baseClassName = "leaderboard-table";
 
-interface LeaderMockedDataInterface {
-  name: string;
-  invitedBy: string;
-  rewards: number;
-}
-
-const mockedData: LeaderMockedDataInterface[] = [
-  {
-    name: "0xC6...V83O",
-    invitedBy: "0x10...1940",
-    rewards: 98382112098,
-  },
-  {
-    name: "0xC6...PPo3",
-    invitedBy: "0x99...2387",
-    rewards: 82438001000,
-  },
-  {
-    name: "0xC6...3093",
-    invitedBy: "0x26...6299",
-    rewards: 110290477398,
-  },
-  {
-    name: "0xC6...XBJ9",
-    invitedBy: "0x74...4924",
-    rewards: 47302503938,
-  },
-];
-
-const leaderboardSoetedData = [...mockedData].sort(
-  (a, b) => b.rewards - a.rewards
-);
+// const leaderboardSoetedData = [...mockedData].sort(
+//   (a, b) => b.rewards - a.rewards
+// );
 
 const LeaderboardTable = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [leaderboard, setLeaderboard] = useState<Leaderboard[]>([]);
+
+  useEffect(() => {
+    const getLeaderboard = async () => {
+      try {
+        const response = await fetchLeaderboard();
+        setLeaderboard(response.result.items);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getLeaderboard();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className={baseClassName}>
+        <Box
+          sx={{ display: "flex", justifyContent: "center", padding: "20px" }}
+        >
+          <CircularProgress />
+        </Box>
+      </div>
+    );
+  }
+
   return (
     <div className={baseClassName}>
       <Table headers={["Rank", "Name", "Invited By", "Rewards"]}>
-        {leaderboardSoetedData.map(({ name, invitedBy, rewards }, index) => (
+        {leaderboard.map(({ no, address, rewards, invited }) => (
           <TableRow
             sx={{
               "@media (max-width:768px)": {
@@ -55,26 +59,28 @@ const LeaderboardTable = () => {
                 borderBottom: "solid 1px #3E4257",
               },
             }}
-            key={index}
+            key={no}
           >
             <TableCell>
               <div className={`${baseClassName}__cell-content`}>
                 <p className={`${baseClassName}__cell-mobile-title`}>Rank</p>
                 <p
                   className={clsx({
-                    [`${baseClassName}__rank-gold`]: index === 0,
-                    [`${baseClassName}__rank-silver`]: index === 1,
-                    [`${baseClassName}__rank-bronze`]: index === 2,
+                    [`${baseClassName}__rank-gold`]: no === 1,
+                    [`${baseClassName}__rank-silver`]: no === 2,
+                    [`${baseClassName}__rank-bronze`]: no === 3,
                   })}
                 >
-                  {index + 1}
+                  {no}
                 </p>
               </div>
             </TableCell>
             <TableCell>
               <div className={`${baseClassName}__cell-content`}>
                 <p className={`${baseClassName}__cell-mobile-title`}>Name</p>
-                <p className={`${baseClassName}__text`}>{name}</p>
+                <p className={`${baseClassName}__text`}>
+                  {shortAddress(address)}
+                </p>
               </div>
             </TableCell>
             <TableCell>
@@ -82,7 +88,7 @@ const LeaderboardTable = () => {
                 <p className={`${baseClassName}__cell-mobile-title`}>
                   Invited By
                 </p>
-                <LinkRedirect url={invitedBy} />
+                <LinkRedirect url={shortAddress(invited.address)} />
               </div>
             </TableCell>
             <TableCell>

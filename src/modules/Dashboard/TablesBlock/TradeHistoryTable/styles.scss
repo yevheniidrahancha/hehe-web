@@ -1,4 +1,6 @@
 .trade-history {
+  background-color: #252836;
+
   &__header-text {
     margin-right: 4px;
   }
@@ -9,6 +11,7 @@
 
   &__type-buy {
     color: #6ab67c;
+    text-transform: uppercase;
   }
 
   &__marker {

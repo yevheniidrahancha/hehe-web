@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Lilita_One } from "next/font/google";
 import "./styles.scss";
 import "./globals.css";
 import Header from "@/containers/Header/Header";
+import Authorization from "@/components/Authorization/Authorization";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,8 +36,10 @@ export default function RootLayout({
       <body
         className={`${lilitaOne.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        <div className="layout">{children}</div>
+        <Authorization>
+          <Header />
+          <div className="layout">{children}</div>
+        </Authorization>
       </body>
     </html>
   );

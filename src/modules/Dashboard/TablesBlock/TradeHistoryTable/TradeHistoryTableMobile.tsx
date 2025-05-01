@@ -1,25 +1,22 @@
-import { TradeRow } from "@/types/Types";
 import { formatDate } from "@/utils/formatDate";
-
 import { formatScientificNumber } from "@/utils/formatScientificNumber";
-import { Ranks } from "@/types/Ranks";
-import { getIconByRank } from "@/utils/getIconByRank";
 import clsx from "clsx";
 import CopyToClipboard from "@/components/CopyToClipboard/CopyToClipboard";
 import CopyIcon from "../../../../assets/copy-green.svg";
 import "./styles.scss";
+import { ExchangeHistory } from "@/api/api";
 
 const baseClassName = "trade-history-table-mobile";
 
-const TradeHistoryTableMobile = ({ data }: { data: TradeRow[] }) => {
+const TradeHistoryTableMobile = ({ data }: { data: ExchangeHistory[] }) => {
   return (
     <div className={baseClassName}>
       {data.map((item) => (
-        <div key={item.rank} className={`${baseClassName}__card`}>
+        <div key={item.maker} className={`${baseClassName}__card`}>
           <div className={`${baseClassName}__column`}>
             <p className={`${baseClassName}__label`}>Date</p>
             <p className={`${baseClassName}__content`}>
-              {formatDate(item.date)}
+              {formatDate(item.timestamp)}
             </p>
           </div>
           <div className={`${baseClassName}__column`}>
@@ -36,28 +33,30 @@ const TradeHistoryTableMobile = ({ data }: { data: TradeRow[] }) => {
           <div className={`${baseClassName}__column`}>
             <p className={`${baseClassName}__label`}>Price</p>
             <p className={`${baseClassName}__content`}>
-              $ {formatScientificNumber(item.priceSol)}
+              $ {formatScientificNumber(item.price_usd)}
             </p>
           </div>
           <div className={`${baseClassName}__column`}>
             <p className={`${baseClassName}__label`}>Total</p>
             <div>
               <div className={`${baseClassName}__total`}>
-                <p className={`${baseClassName}__content`}>${item.total}</p>
-                {getIconByRank(item.rank as Ranks)}
+                <p className={`${baseClassName}__content`}>
+                  ${item.amount.toLocaleString("en-US")}
+                </p>
+                {/* {getIconByRank(item.rank as Ranks)} */}
               </div>
             </div>
           </div>
           <div className={`${baseClassName}__column`}>
             <p className={`${baseClassName}__label`}>Price ETH</p>
             <p className={`${baseClassName}__content`}>
-              $ {formatScientificNumber(item.priceSol)}
+              $ {formatScientificNumber(item.amount_usd)}
             </p>
           </div>
           <div className={`${baseClassName}__column`}>
             <p className={`${baseClassName}__label`}>Amount HYPE</p>
             <p className={`${baseClassName}__content`}>
-              $ {formatScientificNumber(item.priceSol)}
+              $ {formatScientificNumber(item.amount_usd)}
             </p>
           </div>
           <div className={`${baseClassName}__column`}>
@@ -69,11 +68,11 @@ const TradeHistoryTableMobile = ({ data }: { data: TradeRow[] }) => {
                   `${baseClassName}__content-marker`
                 )}
               >
-                {item.marker}
+                {item.maker}
               </p>
               <CopyToClipboard
                 imageSrc={CopyIcon}
-                textToCopy={item.marker}
+                textToCopy={item.maker}
                 altText="copy"
               />
             </div>

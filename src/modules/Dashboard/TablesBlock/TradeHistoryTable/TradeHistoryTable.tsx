@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -7,16 +7,16 @@ import {
   TableRow,
   Paper,
   TableSortLabel,
+  Box,
+  CircularProgress,
 } from "@mui/material";
 
 import FilterIcon from "../../../../assets/filter.svg";
 import Image from "next/image";
 import TableCell from "@/components/TableCell/TableCell";
 import TableHeaderCell from "@/components/TableHeaderCell/TableHeaderCell";
-import { getIconByRank } from "@/utils/getIconByRank";
-import { Ranks } from "@/types/Ranks";
 
-import { SortDirection, SortKey, TradeRow } from "@/types/Types";
+import { SortDirection, SortKey } from "@/types/Types";
 import { sortTradeHistory } from "@/utils/sortTradeHistory";
 import { formatDate } from "@/utils/formatDate";
 import CopyIcon from "../../../../assets/copy-green.svg";
@@ -24,6 +24,8 @@ import CopyToClipboard from "@/components/CopyToClipboard/CopyToClipboard";
 import "./styles.scss";
 import { formatScientificNumber } from "@/utils/formatScientificNumber";
 import TradeHistoryTableMobile from "./TradeHistoryTableMobile";
+import { ExchangeHistory, fetchExchangeHistory } from "@/api/api";
+import { shortAddress } from "@/utils/shortAddress";
 
 const baseClassName = "trade-history";
 
@@ -45,51 +47,10 @@ const sortLabelStyles = {
   },
 };
 
-const mockData: TradeRow[] = [
-  {
-    date: 1713099200000,
-    type: "Sell",
-    price: 0.0181,
-    total: 104.2,
-    priceSol: 0.01544,
-    amountHype: 1300260900,
-    rank: "octopus",
-    marker: "8BcUL...wnj7",
-  },
-  {
-    date: 1713098929000,
-    type: "Sell",
-    price: 0.01828,
-    total: 1388.6,
-    priceSol: 0.0001542,
-    amountHype: 1847120492,
-    rank: "Hamster",
-    marker: "2h393...jj03",
-  },
-  {
-    date: 1713098770000,
-    type: "Buy",
-
-    total: 93.19,
-    price: 0.01892,
-    priceSol: 0.0153,
-    amountHype: 909840194,
-    rank: "Fish",
-    marker: "c03jc0...ifh8",
-  },
-  {
-    date: 1713099368000,
-    type: "Sell",
-    price: 0.018,
-    total: 39.17,
-    priceSol: 0.0151,
-    amountHype: 1300260900,
-    rank: "kraken",
-    marker: "c93nc9...1opp",
-  },
-];
-
 const TradeHistoryTable = () => {
+  const [exchangeHistory, setExchangeHistory] = useState<ExchangeHistory[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const [sortConfig, setSortConfig] = useState<{
     key: SortKey;
     direction: SortDirection;
@@ -99,6 +60,21 @@ const TradeHistoryTable = () => {
   });
 
   const [typeSort, setTypeSort] = useState("");
+
+  useEffect(() => {
+    const getExchangeHistory = async () => {
+      try {
+        const response = await fetchExchangeHistory();
+        setExchangeHistory(response.result.items);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getExchangeHistory();
+  }, []);
 
   const handleSort = (key: SortKey) => {
     setSortConfig((prev) => {
@@ -126,7 +102,19 @@ const TradeHistoryTable = () => {
     );
   };
 
-  const sortedData = sortTradeHistory(mockData, sortConfig, typeSort);
+  const sortedData = sortTradeHistory(exchangeHistory, sortConfig, typeSort);
+
+  if (isLoading) {
+    return (
+      <div className={baseClassName}>
+        <Box
+          sx={{ display: "flex", justifyContent: "center", padding: "20px" }}
+        >
+          <CircularProgress />
+        </Box>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -213,7 +201,7 @@ const TradeHistoryTable = () => {
                     IconComponent={() => null}
                     sx={sortLabelStyles}
                   >
-                    <p className={`${baseClassName}__header-text`}>Price SOL</p>
+                    <p className={`${baseClassName}__header-text`}>Price ETH</p>
                     <Image
                       src={FilterIcon}
                       width={12}
@@ -250,7 +238,7 @@ const TradeHistoryTable = () => {
             <TableBody>
               {sortedData.map((item, index) => (
                 <TableRow key={index}>
-                  <TableCell>{formatDate(item.date)}</TableCell>
+                  <TableCell>{formatDate(item.timestamp)}</TableCell>
                   <TableCell>
                     <p
                       className={`${baseClassName}__type-${item.type.toLowerCase()}`}
@@ -259,26 +247,26 @@ const TradeHistoryTable = () => {
                     </p>
                   </TableCell>
                   <TableCell>
-                    <p>${formatScientificNumber(item.price)}</p>
+                    <p>${formatScientificNumber(item.price_usd)}</p>
                   </TableCell>
                   <TableCell>
                     <div className={`${baseClassName}__total`}>
-                      <p>${item.total}</p>
-                      {getIconByRank(item.rank as Ranks)}
+                      <p>${item.amount.toLocaleString("en-US")}</p>
+                      {/* {getIconByRank(item.rank as Ranks)} */}
                     </div>
                   </TableCell>
                   <TableCell>
-                    $ {formatScientificNumber(item.priceSol)}
+                    $ {formatScientificNumber(item.amount_usd)}
                   </TableCell>
                   <TableCell>
-                    {item.amountHype.toLocaleString("en-US")}
+                    {item.amount_usd.toLocaleString("en-US")}
                   </TableCell>
                   <TableCell>
                     <div className={`${baseClassName}__marker`}>
-                      <p>{item.marker}</p>
+                      <p>{shortAddress(item.maker)}</p>
                       <CopyToClipboard
                         imageSrc={CopyIcon}
-                        textToCopy={item.marker}
+                        textToCopy={item.maker}
                         altText="copy"
                       />
                     </div>

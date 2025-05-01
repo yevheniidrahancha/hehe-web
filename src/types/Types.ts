@@ -1,9 +1,9 @@
 export enum SortKey {
-  DATE = "date",
-  PRICE = "price",
-  TOTAL = "total",
-  PRICESOL = "priceSol",
-  AMOUNTHYPE = "amountHype",
+  DATE = "timestamp",
+  PRICE = "price_usd",
+  TOTAL = "amount",
+  PRICESOL = "amount_usd",
+  AMOUNTHYPE = "amount_usd",
   NONE = "",
 }
 
